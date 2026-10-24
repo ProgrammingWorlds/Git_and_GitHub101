@@ -4,7 +4,7 @@ from pypdf import PdfWriter
 O = '/mnt/user-data/outputs/git-101-course/'
 
 T = {
-'en': dict(dir='ltr', lang='en', title='Git & GitHub 101', sub='From Zero to Your First Pull Request', slogan='Beyond Code. Beyond Limits.',
+'en': dict(dir='ltr', lang='en', title='Git & GitHub 101', sub='From Zero to Your First Pull Request ,
   acad='Programming Worlds Academy', logo='PW-Logo-Primary-Stacked_color-dark.svg', mod='MODULE 01', modt='Understanding Git & GitHub',
   modd='What version control is, why every developer uses it, and how Git, GitHub and VS Code fit together.',
   les='LESSON 1.1', lt='What is version control?', other='ما هو التحكم بالإصدارات؟',
@@ -31,7 +31,7 @@ T = {
   voc=[('Version control','A system that records changes to files over time'),('Commit','A saved snapshot with a message and author'),('History','The chain of commits in a project'),('Distributed','Every copy holds the full history')],
   nxt='<b>Lesson 1.2 — Git vs GitHub vs VS Code.</b> You now know what Git does. Next you will meet the three tools you will use and see how they work together.',
   d_old='Copying folders', d_new='Git history', d_c='commit'),
-'ar': dict(dir='rtl', lang='ar', title='Git و GitHub 101', sub='من الصفر إلى أول Pull Request', slogan='Beyond Code. Beyond Limits.',
+'ar': dict(dir='rtl', lang='ar', title='Git و GitHub 101', sub='من الصفر إلى أول Pull Request', 
   acad='أكاديمية عوالم البرمجة', logo='PW-Logo-Arabic_color-dark.svg', mod='الوحدة 01', modt='فهم Git وGitHub',
   modd='ما هو التحكم بالإصدارات، ولماذا يستخدمه كل مطوّر، وكيف تعمل أدوات Git وGitHub وVS Code معًا.',
   les='الدرس 1.1', lt='ما هو التحكم بالإصدارات؟', other='What is version control?',

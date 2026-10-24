@@ -1,5 +1,5 @@
 # Git & GitHub 101: From Zero to Your First Pull Request
-**Programming Worlds Academy · Beyond Code. Beyond Limits.**
+**Programming Worlds Academy·**
 دورة ثنائية اللغة (English + العربية) · Windows · Git Bash · VS Code
 
 ## What is inside / ماذا يوجد

@@ -81,7 +81,6 @@ def home_page(l):
 <div class="pw-hero"><div class="k2">PROGRAMMING WORLDS ACADEMY</div><h1><bdi dir="ltr">Git &amp; GitHub 101</bdi></h1><p>{"From zero to your first pull request. 12 modules, 36 lessons, 12 labs and a final project, for Windows and VS Code." if en else "من الصفر إلى أول Pull Request. 12 وحدة و36 درسًا و12 مختبرًا ومشروع نهائي، لنظام Windows وVS Code."}</p>
 <a class="pw-btn" id="cont" href="lesson-1-1-{l}.html">{UI[l]["start"]}</a><a class="pw-btn alt" href="cheatsheet-{l}.html">{"Cheat sheet" if en else "ورقة الأوامر"}</a>
 <div class="pw-bar"><i id="totalbar"></i></div><div class="pw-pct" id="totalpct" style="color:#DCDFF0"></div>
-<div class="k2" style="margin-top:16px;color:#FFB23F;letter-spacing:.12em">BEYOND CODE. BEYOND LIMITS.</div></div>
 <div class="pw-sec">{"Modules" if en else "الوحدات"}</div><div class="pw-grid" id="modules"></div>
 <div class="pw-sec">{"Resources" if en else "مصادر"}</div><div class="pw-grid">'''+''.join(f'<div class="pw-card"><h3><a href="{k}-{l}.html">{t_}</a></h3></div>' for k,t_ in EXTRA[l])+'</div></div>'
     return b.page(l,body+b.JS).replace('<body ','<body data-pw="home" ',1)
