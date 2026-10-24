@@ -1,0 +1,77 @@
+<!doctype html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Git &amp; GitHub 101 · Writing a README with Markdown</title><link rel="icon" href="assets/PW-Symbol_color-light.svg"><style>
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-Medium.ttf);font-weight:500}
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-Bold.ttf);font-weight:700}
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-Regular.ttf);font-weight:400}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-SemiBold.ttf);font-weight:600}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-Bold.ttf);font-weight:700}
+@font-face{font-family:'JetBrains Mono';src:url(assets/fonts/JetBrainsMono-Medium.ttf);font-weight:500}
+:root{--bg:#F6F5F1;--fg:#0B1430;--mut:#5A6280;--card:#fff;--line:#CDD1DE;--brand:#2C31C4;--soft:#EEEFFE;--amber:#FFB23F;--amber-s:#FFF1D9;--ok:#13693F;--err:#A12424}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0B1430;--fg:#F6F5F1;--mut:#A9AFC2;--card:#1B2340;--line:#2E3550;--brand:#8C90FF;--soft:#1A1E73;--amber-s:#2E2410}}
+:root[data-theme=dark]{--bg:#0B1430;--fg:#F6F5F1;--mut:#A9AFC2;--card:#1B2340;--line:#2E3550;--brand:#8C90FF;--soft:#1A1E73;--amber-s:#2E2410}
+h2,h3{break-after:avoid}tr{break-inside:avoid}figure,.box,.qq{break-inside:avoid}*{box-sizing:border-box}html{background:var(--bg)}
+body{margin:0;color:var(--fg);font:500 15px/1.65 Manrope,'IBM Plex Sans Arabic',sans-serif}
+[lang=ar] body,body[lang=ar]{font-family:'IBM Plex Sans Arabic',Manrope,sans-serif;font-weight:400;line-height:1.85}
+.cover{height:297mm;width:210mm;background:#0B1430 url(assets/pw-background-ink_1920x1080.png) right center/auto 100% no-repeat;color:#fff;padding:22mm 20mm;display:flex;flex-direction:column;justify-content:space-between;page:cover;break-after:page}
+.cover img{height:46mm;align-self:flex-start}
+.cover .k{font:600 12px var(--mono,'JetBrains Mono');letter-spacing:.14em;color:#FFB23F}
+[lang=ar] .cover .k{letter-spacing:0;font-family:'IBM Plex Sans Arabic';font-size:14px}
+.cover h1{font-size:60px;line-height:1.05;font-weight:800;letter-spacing:-.025em;margin:10px 0 14px;max-width:150mm}
+[lang=ar] .cover h1{font-weight:700;letter-spacing:0}
+.cover p{font-size:20px;color:#BBBDF9;margin:0;max-width:120mm}
+.cover .s{font:600 12px 'JetBrains Mono';letter-spacing:.12em;color:#A9AFC2}
+.opener{height:297mm;width:210mm;background:#0B1430 url(assets/pw-pattern-Module-Field_ink_1024.png) right bottom/150mm no-repeat;color:#fff;padding:28mm 20mm;display:flex;flex-direction:column;justify-content:flex-end;page:cover;break-after:page}
+.opener .n{font:800 120px/1 Manrope;color:#FFB23F;margin-bottom:8px}[lang=ar] .opener .n{font-family:'IBM Plex Sans Arabic';font-weight:700;font-size:96px}
+.opener h2{font-size:42px;line-height:1.12;font-weight:800;margin:0 0 12px;color:#fff}.opener p{color:#BBBDF9;font-size:18px;max-width:130mm;margin:0 0 36mm}
+.bgp{position:fixed;inset-inline-end:0;bottom:0;width:70mm;height:70mm;background:url(assets/pw-pattern-Module-Field_paper_1024.png) right bottom/cover no-repeat;opacity:.55;z-index:-1}
+[dir=rtl] .bgp{transform:scaleX(-1)}
+.lessonhead{border-bottom:3px solid var(--amber);padding-bottom:14px;margin-bottom:8px}
+.k2{font:600 11px 'JetBrains Mono';letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}[lang=ar] .k2{font-family:'IBM Plex Sans Arabic';letter-spacing:0;text-transform:none;font-size:13px}
+h1.lt{font-size:34px;line-height:1.1;font-weight:800;letter-spacing:-.02em;margin:6px 0 2px}[lang=ar] h1.lt{font-weight:700;letter-spacing:0}
+.alt{color:var(--mut);font-size:15px;direction:ltr;text-align:start}[lang=ar] .alt{direction:ltr;text-align:right;font-family:Manrope}
+h3{font-size:18px;font-weight:700;margin:22px 0 6px;color:var(--brand);display:flex;align-items:center;gap:10px}
+h3:before{content:"";width:10px;height:10px;background:var(--amber);border-radius:2px}
+ul{padding-inline-start:22px;margin:6px 0}li{margin:3px 0}
+code{font:500 .88em 'JetBrains Mono',monospace;background:var(--soft);border-radius:4px;padding:1px 6px;direction:ltr;unicode-bidi:isolate;display:inline-block}
+.box{border-radius:12px;padding:12px 16px;border-inline-start:4px solid var(--amber);background:var(--amber-s);margin:8px 0}
+.box.b{border-color:var(--brand);background:var(--soft)}
+figure{margin:12px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}figure svg{width:100%;height:auto;display:block;direction:ltr}
+figcaption{font-size:12px;color:var(--mut);padding-top:6px}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;font-size:13px}th,td{padding:8px 12px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top}th{background:var(--soft)}
+.qq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0;break-inside:avoid}
+.qq label{display:block;padding:6px 8px;border-radius:8px;cursor:pointer}.qq label:hover{background:var(--soft)}
+.fb{margin-top:6px;font-size:13px;display:none}.fb.on{display:block}.fb.ok{color:var(--ok)}.fb.no{color:var(--err)}
+.print .qq label{cursor:default}.wrap{max-width:820px;margin:0 auto;padding:24px 20px 80px}
+.tools{display:flex;gap:8px;justify-content:flex-end;margin-bottom:12px}.tools button{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;padding:6px 14px;font:700 13px Manrope,'IBM Plex Sans Arabic';cursor:pointer}
+@page{size:A4;margin:18mm 18mm 20mm}@page cover{margin:0}
+@media print{html{background:var(--bg)}.tools{display:none}.wrap{padding:0;max-width:none}h3,figure,table,.box{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style><!--pw--><link rel="stylesheet" href="assets/platform.css"><!--/pw--></head><body lang="en"><div class="wrap"><div class="tools"><a href="lesson-11-2-en.html"><button>→</button></a><a href="lesson-11-1-ar.html"><button>العربية</button></a><button id="tg">☾ / ☀</button></div><section class="lesson"><div class="lessonhead"><div class="k2">MODULE 11 · LESSON 11.1</div><h1 class="lt">Writing a README with Markdown</h1><div class="alt">كتابة README بـ Markdown</div></div>
+<h3>Learning objectives</h3><ul><li>Write Markdown basics.</li><li>Create a useful README.md.</li><li>Preview it in VS Code.</li></ul>
+<h3>Prerequisites</h3><p>Module 5.</p><h3>Introduction</h3><p>The README is the front door of your repository. GitHub shows it automatically.</p>
+<h3>Explanation</h3><p><b>Markdown</b> is plain text with simple symbols. <code>#</code> makes a heading, <code>##</code> a smaller one, <code>-</code> a bullet, <code>1.</code> a numbered item, <code>**bold**</code> bold text, backticks inline code, three backticks a code block, <code>[text](url)</code> a link.</p><p>A good README answers: what is this, how do I run it, and who made it. Figure 1 shows a short example.</p><p>Create <code>README.md</code> in the repository root. In VS Code press <kbd>Ctrl+Shift+V</kbd> to preview it.</p><p>Commit it: <code>git add README.md</code>, <code>git commit -m "Improve README"</code>, <code>git push</code>.</p><p>On GitHub the README appears under the file list on the repository page.</p><p>Keep it short, accurate and updated.</p>
+<h3>Real-world analogy</h3><div class="box b">The README is the sign above a shop door: it tells visitors what is inside before they walk in.</div>
+<h3>Diagram</h3><figure><pre style="direction:ltr;text-align:left;background:#0B1430;color:#fff;border-radius:12px;padding:12px 16px;font:500 12.5px/1.6 'JetBrains Mono',monospace;white-space:pre-wrap;margin:8px 0"># My First Project
+
+A small website I use to learn Git and GitHub.
+
+## Features
+- Home page
+- About page
+
+## How to run
+1. Clone the repository
+2. Open `index.html` in your browser
+
+## Author
+[Your name](https://github.com/YOUR-USERNAME)</pre><figcaption>Figure 1 · Example README.md (plain text)</figcaption></figure>
+<h3>Commands</h3><p><code>git add README.md</code><br><code>git commit -m "Improve README"</code><br><code>git push</code><p>Figure 1 shows a small README.</p></p>
+<h3>Common mistakes and solutions</h3><table><tr><td><b>A blank README.</b></td><td>Add at least a title and a description.</td></tr><tr><td><b>Broken formatting from missing blank lines.</b></td><td>Leave a blank line between blocks.</td></tr><tr><td><b>Outdated instructions.</b></td><td>Update it when the project changes.</td></tr></table>
+<h3>Practical exercise</h3><div class="box">Write your own README with a title, features, run instructions and author.</div><h3>Expected result</h3><p>GitHub shows formatted headings and a link.</p>
+<h3>Knowledge check</h3><div class="qq"><b>1. What does # make in Markdown?</b><label><input type="radio" name="q0" data-c="0" data-w="More # means smaller."> A link</label><label><input type="radio" name="q0" data-c="1" data-w="More # means smaller."> A heading</label><label><input type="radio" name="q0" data-c="0" data-w="More # means smaller."> A comment</label><div class="fb"></div></div><div class="qq"><b>2. What shortcut previews Markdown in VS Code?</b><label><input type="radio" name="q1" data-c="1" data-w="It opens the preview."> Ctrl+Shift+V</label><label><input type="radio" name="q1" data-c="0" data-w="It opens the preview."> Ctrl+Z</label><label><input type="radio" name="q1" data-c="0" data-w="It opens the preview."> Alt+F4</label><div class="fb"></div></div><div class="qq"><b>3. Where is README.md placed?</b><label><input type="radio" name="q2" data-c="0" data-w="GitHub shows the root README."> Only on GitHub</label><label><input type="radio" name="q2" data-c="1" data-w="GitHub shows the root README."> Repository root</label><label><input type="radio" name="q2" data-c="0" data-w="GitHub shows the root README."> Anywhere in Windows</label><div class="fb"></div></div><h3>Answers</h3><ul><li>A heading — More # means smaller.</li><li>Ctrl+Shift+V — It opens the preview.</li><li>Repository root — GitHub shows the root README.</li></ul>
+<h3>Summary</h3><p>A README explains what, how and who, written in Markdown.</p><h3>Key vocabulary</h3><table><tr><td><b>Markdown</b></td><td>Text formatting language</td></tr><tr><td><b>README</b></td><td>Project introduction file</td></tr><tr><td><b>Preview</b></td><td>Rendered view of Markdown</td></tr></table>
+<h3>Next lesson</h3><div class="box b"><b>Lesson 11.2 — .gitignore.</b></div></section></div><script>
+document.querySelectorAll('.qq input').forEach(i=>i.onchange=()=>{const f=i.closest('.qq').querySelector('.fb');const ok=i.dataset.c==='1';f.className='fb on '+(ok?'ok':'no');f.textContent=(ok?'✓ ':'✗ ')+i.dataset.w});
+const D=document.documentElement;function th(v){D.dataset.theme=v;try{localStorage.setItem('pw-theme',v)}catch(e){}}
+try{const s=localStorage.getItem('pw-theme');if(s)D.dataset.theme=s}catch(e){}
+document.getElementById('tg').onclick=()=>th(D.dataset.theme==='dark'?'light':'dark');
+</script><!--pw--><script src="assets/nav-data.js"></script><script src="assets/search-index.js"></script><script src="assets/platform.js"></script><!--/pw--></body></html>

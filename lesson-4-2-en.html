@@ -1,0 +1,64 @@
+<!doctype html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Git &amp; GitHub 101 · Understanding git commit</title><link rel="icon" href="assets/PW-Symbol_color-light.svg"><style>
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-Medium.ttf);font-weight:500}
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-Bold.ttf);font-weight:700}
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-Regular.ttf);font-weight:400}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-SemiBold.ttf);font-weight:600}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-Bold.ttf);font-weight:700}
+@font-face{font-family:'JetBrains Mono';src:url(assets/fonts/JetBrainsMono-Medium.ttf);font-weight:500}
+:root{--bg:#F6F5F1;--fg:#0B1430;--mut:#5A6280;--card:#fff;--line:#CDD1DE;--brand:#2C31C4;--soft:#EEEFFE;--amber:#FFB23F;--amber-s:#FFF1D9;--ok:#13693F;--err:#A12424}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0B1430;--fg:#F6F5F1;--mut:#A9AFC2;--card:#1B2340;--line:#2E3550;--brand:#8C90FF;--soft:#1A1E73;--amber-s:#2E2410}}
+:root[data-theme=dark]{--bg:#0B1430;--fg:#F6F5F1;--mut:#A9AFC2;--card:#1B2340;--line:#2E3550;--brand:#8C90FF;--soft:#1A1E73;--amber-s:#2E2410}
+h2,h3{break-after:avoid}tr{break-inside:avoid}figure,.box,.qq{break-inside:avoid}*{box-sizing:border-box}html{background:var(--bg)}
+body{margin:0;color:var(--fg);font:500 15px/1.65 Manrope,'IBM Plex Sans Arabic',sans-serif}
+[lang=ar] body,body[lang=ar]{font-family:'IBM Plex Sans Arabic',Manrope,sans-serif;font-weight:400;line-height:1.85}
+.cover{height:297mm;width:210mm;background:#0B1430 url(assets/pw-background-ink_1920x1080.png) right center/auto 100% no-repeat;color:#fff;padding:22mm 20mm;display:flex;flex-direction:column;justify-content:space-between;page:cover;break-after:page}
+.cover img{height:46mm;align-self:flex-start}
+.cover .k{font:600 12px var(--mono,'JetBrains Mono');letter-spacing:.14em;color:#FFB23F}
+[lang=ar] .cover .k{letter-spacing:0;font-family:'IBM Plex Sans Arabic';font-size:14px}
+.cover h1{font-size:60px;line-height:1.05;font-weight:800;letter-spacing:-.025em;margin:10px 0 14px;max-width:150mm}
+[lang=ar] .cover h1{font-weight:700;letter-spacing:0}
+.cover p{font-size:20px;color:#BBBDF9;margin:0;max-width:120mm}
+.cover .s{font:600 12px 'JetBrains Mono';letter-spacing:.12em;color:#A9AFC2}
+.opener{height:297mm;width:210mm;background:#0B1430 url(assets/pw-pattern-Module-Field_ink_1024.png) right bottom/150mm no-repeat;color:#fff;padding:28mm 20mm;display:flex;flex-direction:column;justify-content:flex-end;page:cover;break-after:page}
+.opener .n{font:800 120px/1 Manrope;color:#FFB23F;margin-bottom:8px}[lang=ar] .opener .n{font-family:'IBM Plex Sans Arabic';font-weight:700;font-size:96px}
+.opener h2{font-size:42px;line-height:1.12;font-weight:800;margin:0 0 12px;color:#fff}.opener p{color:#BBBDF9;font-size:18px;max-width:130mm;margin:0 0 36mm}
+.bgp{position:fixed;inset-inline-end:0;bottom:0;width:70mm;height:70mm;background:url(assets/pw-pattern-Module-Field_paper_1024.png) right bottom/cover no-repeat;opacity:.55;z-index:-1}
+[dir=rtl] .bgp{transform:scaleX(-1)}
+.lessonhead{border-bottom:3px solid var(--amber);padding-bottom:14px;margin-bottom:8px}
+.k2{font:600 11px 'JetBrains Mono';letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}[lang=ar] .k2{font-family:'IBM Plex Sans Arabic';letter-spacing:0;text-transform:none;font-size:13px}
+h1.lt{font-size:34px;line-height:1.1;font-weight:800;letter-spacing:-.02em;margin:6px 0 2px}[lang=ar] h1.lt{font-weight:700;letter-spacing:0}
+.alt{color:var(--mut);font-size:15px;direction:ltr;text-align:start}[lang=ar] .alt{direction:ltr;text-align:right;font-family:Manrope}
+h3{font-size:18px;font-weight:700;margin:22px 0 6px;color:var(--brand);display:flex;align-items:center;gap:10px}
+h3:before{content:"";width:10px;height:10px;background:var(--amber);border-radius:2px}
+ul{padding-inline-start:22px;margin:6px 0}li{margin:3px 0}
+code{font:500 .88em 'JetBrains Mono',monospace;background:var(--soft);border-radius:4px;padding:1px 6px;direction:ltr;unicode-bidi:isolate;display:inline-block}
+.box{border-radius:12px;padding:12px 16px;border-inline-start:4px solid var(--amber);background:var(--amber-s);margin:8px 0}
+.box.b{border-color:var(--brand);background:var(--soft)}
+figure{margin:12px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}figure svg{width:100%;height:auto;display:block;direction:ltr}
+figcaption{font-size:12px;color:var(--mut);padding-top:6px}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;font-size:13px}th,td{padding:8px 12px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top}th{background:var(--soft)}
+.qq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0;break-inside:avoid}
+.qq label{display:block;padding:6px 8px;border-radius:8px;cursor:pointer}.qq label:hover{background:var(--soft)}
+.fb{margin-top:6px;font-size:13px;display:none}.fb.on{display:block}.fb.ok{color:var(--ok)}.fb.no{color:var(--err)}
+.print .qq label{cursor:default}.wrap{max-width:820px;margin:0 auto;padding:24px 20px 80px}
+.tools{display:flex;gap:8px;justify-content:flex-end;margin-bottom:12px}.tools button{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;padding:6px 14px;font:700 13px Manrope,'IBM Plex Sans Arabic';cursor:pointer}
+@page{size:A4;margin:18mm 18mm 20mm}@page cover{margin:0}
+@media print{html{background:var(--bg)}.tools{display:none}.wrap{padding:0;max-width:none}h3,figure,table,.box{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style><!--pw--><link rel="stylesheet" href="assets/platform.css"><!--/pw--></head><body lang="en"><div class="wrap"><div class="tools"><a href="lesson-4-1-en.html"><button>←</button></a><a href="lesson-4-3-en.html"><button>→</button></a><a href="lesson-4-2-ar.html"><button>العربية</button></a><button id="tg">☾ / ☀</button></div><section class="lesson"><div class="lessonhead"><div class="k2">MODULE 04 · LESSON 4.2</div><h1 class="lt">Understanding git commit</h1><div class="alt">فهم git commit</div></div>
+<h3>Learning objectives</h3><ul><li>Explain what a commit is.</li><li>Create a commit with a good message.</li><li>Read a commit hash.</li><li>Tell good from bad commit messages.</li></ul>
+<h3>Prerequisites</h3><p>Lesson 4.1.</p><h3>Introduction</h3><p>A commit is the moment you save a snapshot into history. This is the heart of Git.</p>
+<h3>Explanation</h3><p>A <b>commit</b> is a snapshot of the staged changes plus a message, an author and a date. It is stored in your local history and linked to the commit before it.</p><p><code>git commit -m "Add homepage"</code> creates a commit with that message. <code>-m</code> means “message”. Keep the message inside quotes.</p><p>Git prints a line such as <code>[main (root-commit) 3f2a9c1] Add homepage</code>. <b>main</b> is the branch, <b>root-commit</b> marks the very first commit, and <b>3f2a9c1</b> is the start of the <b>commit hash</b>, a unique ID.</p><p>Commits stay on your computer. Nothing is on GitHub until you push (Module 5).</p><p><b>Good messages</b> start with a verb and say what changed: <code>Add homepage</code>, <code>Fix navigation styling</code>, <code>Update README</code>. <b>Bad messages</b> say nothing: <code>changes</code>, <code>stuff</code>, <code>asdf</code>.</p><p><b>Meaningful commits.</b> Each commit should be one logical change that works. That makes history readable and mistakes easy to undo.</p>
+<h3>Real-world analogy</h3><div class="box b">A commit is a save point in a video game with a label. Good labels let you find “before the boss fight” quickly.</div>
+<h3>Diagram</h3><figure><svg viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono,monospace" font-size="13"><rect width="700" height="150" rx="10" fill="#1F1F1F"/><rect width="700" height="26" rx="10" fill="#181818"/><circle cx="16" cy="13" r="4" fill="#FF5F57"/><circle cx="30" cy="13" r="4" fill="#FEBC2E"/><circle cx="44" cy="13" r="4" fill="#28C840"/><text x="350" y="17" fill="#9D9D9D" font-size="11" text-anchor="middle" font-family="sans-serif">Illustration · Git Bash (not a real screenshot)</text><text x="18" y="54" fill="#FFB23F" xml:space="preserve">$ git commit -m "Add homepage"</text><text x="18" y="76" fill="#E8E8E8" xml:space="preserve">[main (root-commit) 3f2a9c1] Add homepage</text><text x="18" y="98" fill="#E8E8E8" xml:space="preserve"> 2 files changed, 20 insertions(+)</text><text x="18" y="120" fill="#E8E8E8" xml:space="preserve"> create mode 100644 index.html</text><text x="18" y="142" fill="#E8E8E8" xml:space="preserve"> create mode 100644 style.css</text></svg><figcaption>Figure 1 · Illustration of the expected output</figcaption></figure>
+<h3>Commands</h3><p><code>git commit -m "Add homepage"</code><br><code>git commit -m "Fix navigation styling"</code><br><code>git commit -m "Update README"</code><p><b>Option:</b> <code>-m</code> message. Run only after staging. Figure 1 shows the first commit of the project.</p></p>
+<h3>Common mistakes and solutions</h3><table><tr><td><b>“Author identity unknown”</b></td><td>Set <code>user.name</code> and <code>user.email</code> (Lesson 2.3).</td></tr><tr><td><b>“nothing to commit”</b></td><td>Nothing is staged. Run <code>git add</code> first.</td></tr><tr><td><b>Forgetting the quotes.</b></td><td>Put the message in double quotes.</td></tr></table>
+<h3>Practical exercise</h3><div class="box">Commit the staged <code>index.html</code> and <code>style.css</code> with the message <code>Add homepage</code>.</div><h3>Expected result</h3><p>Git prints a line starting <code>[main (root-commit)</code> and lists two created files, as in Figure 1.</p>
+<h3>Knowledge check</h3><div class="qq"><b>1. What does -m mean in git commit -m?</b><label><input type="radio" name="q0" data-c="0" data-w="It supplies the commit message."> Move</label><label><input type="radio" name="q0" data-c="1" data-w="It supplies the commit message."> Message</label><label><input type="radio" name="q0" data-c="0" data-w="It supplies the commit message."> Merge</label><div class="fb"></div></div><div class="qq"><b>2. Which is a good message?</b><label><input type="radio" name="q1" data-c="1" data-w="It starts with a verb and says what changed."> Add homepage</label><label><input type="radio" name="q1" data-c="0" data-w="It starts with a verb and says what changed."> stuff</label><label><input type="radio" name="q1" data-c="0" data-w="It starts with a verb and says what changed."> asdf</label><div class="fb"></div></div><div class="qq"><b>3. Where does a new commit live?</b><label><input type="radio" name="q2" data-c="0" data-w="Push is the step that uploads it."> Nowhere</label><label><input type="radio" name="q2" data-c="1" data-w="Push is the step that uploads it."> On your computer</label><label><input type="radio" name="q2" data-c="0" data-w="Push is the step that uploads it."> On GitHub</label><div class="fb"></div></div><h3>Answers</h3><ul><li>Message — It supplies the commit message.</li><li>Add homepage — It starts with a verb and says what changed.</li><li>On your computer — Push is the step that uploads it.</li></ul>
+<h3>Summary</h3><p>A commit saves staged changes with a message. Use clear messages, and remember commits are local until you push.</p><h3>Key vocabulary</h3><table><tr><td><b>Commit hash</b></td><td>A unique ID for a commit</td></tr><tr><td><b>root-commit</b></td><td>The first commit in a repository</td></tr><tr><td><b>-m</b></td><td>Option to give the commit message</td></tr></table>
+<h3>Next lesson</h3><div class="box b"><b>Lesson 4.3 — Reviewing Git history.</b> You can now save snapshots. Next you will read them.</div></section></div><script>
+document.querySelectorAll('.qq input').forEach(i=>i.onchange=()=>{const f=i.closest('.qq').querySelector('.fb');const ok=i.dataset.c==='1';f.className='fb on '+(ok?'ok':'no');f.textContent=(ok?'✓ ':'✗ ')+i.dataset.w});
+const D=document.documentElement;function th(v){D.dataset.theme=v;try{localStorage.setItem('pw-theme',v)}catch(e){}}
+try{const s=localStorage.getItem('pw-theme');if(s)D.dataset.theme=s}catch(e){}
+document.getElementById('tg').onclick=()=>th(D.dataset.theme==='dark'?'light':'dark');
+</script><!--pw--><script src="assets/nav-data.js"></script><script src="assets/search-index.js"></script><script src="assets/platform.js"></script><!--/pw--></body></html>

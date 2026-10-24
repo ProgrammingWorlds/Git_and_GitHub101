@@ -1,0 +1,64 @@
+<!doctype html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Git &amp; GitHub 101 · Installing Git and VS Code</title><link rel="icon" href="assets/PW-Symbol_color-light.svg"><style>
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-Medium.ttf);font-weight:500}
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-Bold.ttf);font-weight:700}
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-Regular.ttf);font-weight:400}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-SemiBold.ttf);font-weight:600}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-Bold.ttf);font-weight:700}
+@font-face{font-family:'JetBrains Mono';src:url(assets/fonts/JetBrainsMono-Medium.ttf);font-weight:500}
+:root{--bg:#F6F5F1;--fg:#0B1430;--mut:#5A6280;--card:#fff;--line:#CDD1DE;--brand:#2C31C4;--soft:#EEEFFE;--amber:#FFB23F;--amber-s:#FFF1D9;--ok:#13693F;--err:#A12424}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0B1430;--fg:#F6F5F1;--mut:#A9AFC2;--card:#1B2340;--line:#2E3550;--brand:#8C90FF;--soft:#1A1E73;--amber-s:#2E2410}}
+:root[data-theme=dark]{--bg:#0B1430;--fg:#F6F5F1;--mut:#A9AFC2;--card:#1B2340;--line:#2E3550;--brand:#8C90FF;--soft:#1A1E73;--amber-s:#2E2410}
+h2,h3{break-after:avoid}tr{break-inside:avoid}figure,.box,.qq{break-inside:avoid}*{box-sizing:border-box}html{background:var(--bg)}
+body{margin:0;color:var(--fg);font:500 15px/1.65 Manrope,'IBM Plex Sans Arabic',sans-serif}
+[lang=ar] body,body[lang=ar]{font-family:'IBM Plex Sans Arabic',Manrope,sans-serif;font-weight:400;line-height:1.85}
+.cover{height:297mm;width:210mm;background:#0B1430 url(assets/pw-background-ink_1920x1080.png) right center/auto 100% no-repeat;color:#fff;padding:22mm 20mm;display:flex;flex-direction:column;justify-content:space-between;page:cover;break-after:page}
+.cover img{height:46mm;align-self:flex-start}
+.cover .k{font:600 12px var(--mono,'JetBrains Mono');letter-spacing:.14em;color:#FFB23F}
+[lang=ar] .cover .k{letter-spacing:0;font-family:'IBM Plex Sans Arabic';font-size:14px}
+.cover h1{font-size:60px;line-height:1.05;font-weight:800;letter-spacing:-.025em;margin:10px 0 14px;max-width:150mm}
+[lang=ar] .cover h1{font-weight:700;letter-spacing:0}
+.cover p{font-size:20px;color:#BBBDF9;margin:0;max-width:120mm}
+.cover .s{font:600 12px 'JetBrains Mono';letter-spacing:.12em;color:#A9AFC2}
+.opener{height:297mm;width:210mm;background:#0B1430 url(assets/pw-pattern-Module-Field_ink_1024.png) right bottom/150mm no-repeat;color:#fff;padding:28mm 20mm;display:flex;flex-direction:column;justify-content:flex-end;page:cover;break-after:page}
+.opener .n{font:800 120px/1 Manrope;color:#FFB23F;margin-bottom:8px}[lang=ar] .opener .n{font-family:'IBM Plex Sans Arabic';font-weight:700;font-size:96px}
+.opener h2{font-size:42px;line-height:1.12;font-weight:800;margin:0 0 12px;color:#fff}.opener p{color:#BBBDF9;font-size:18px;max-width:130mm;margin:0 0 36mm}
+.bgp{position:fixed;inset-inline-end:0;bottom:0;width:70mm;height:70mm;background:url(assets/pw-pattern-Module-Field_paper_1024.png) right bottom/cover no-repeat;opacity:.55;z-index:-1}
+[dir=rtl] .bgp{transform:scaleX(-1)}
+.lessonhead{border-bottom:3px solid var(--amber);padding-bottom:14px;margin-bottom:8px}
+.k2{font:600 11px 'JetBrains Mono';letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}[lang=ar] .k2{font-family:'IBM Plex Sans Arabic';letter-spacing:0;text-transform:none;font-size:13px}
+h1.lt{font-size:34px;line-height:1.1;font-weight:800;letter-spacing:-.02em;margin:6px 0 2px}[lang=ar] h1.lt{font-weight:700;letter-spacing:0}
+.alt{color:var(--mut);font-size:15px;direction:ltr;text-align:start}[lang=ar] .alt{direction:ltr;text-align:right;font-family:Manrope}
+h3{font-size:18px;font-weight:700;margin:22px 0 6px;color:var(--brand);display:flex;align-items:center;gap:10px}
+h3:before{content:"";width:10px;height:10px;background:var(--amber);border-radius:2px}
+ul{padding-inline-start:22px;margin:6px 0}li{margin:3px 0}
+code{font:500 .88em 'JetBrains Mono',monospace;background:var(--soft);border-radius:4px;padding:1px 6px;direction:ltr;unicode-bidi:isolate;display:inline-block}
+.box{border-radius:12px;padding:12px 16px;border-inline-start:4px solid var(--amber);background:var(--amber-s);margin:8px 0}
+.box.b{border-color:var(--brand);background:var(--soft)}
+figure{margin:12px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}figure svg{width:100%;height:auto;display:block;direction:ltr}
+figcaption{font-size:12px;color:var(--mut);padding-top:6px}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;font-size:13px}th,td{padding:8px 12px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top}th{background:var(--soft)}
+.qq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0;break-inside:avoid}
+.qq label{display:block;padding:6px 8px;border-radius:8px;cursor:pointer}.qq label:hover{background:var(--soft)}
+.fb{margin-top:6px;font-size:13px;display:none}.fb.on{display:block}.fb.ok{color:var(--ok)}.fb.no{color:var(--err)}
+.print .qq label{cursor:default}.wrap{max-width:820px;margin:0 auto;padding:24px 20px 80px}
+.tools{display:flex;gap:8px;justify-content:flex-end;margin-bottom:12px}.tools button{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;padding:6px 14px;font:700 13px Manrope,'IBM Plex Sans Arabic';cursor:pointer}
+@page{size:A4;margin:18mm 18mm 20mm}@page cover{margin:0}
+@media print{html{background:var(--bg)}.tools{display:none}.wrap{padding:0;max-width:none}h3,figure,table,.box{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style><!--pw--><link rel="stylesheet" href="assets/platform.css"><!--/pw--></head><body lang="en"><div class="wrap"><div class="tools"><a href="lesson-2-2-en.html"><button>→</button></a><a href="lesson-2-1-ar.html"><button>العربية</button></a><button id="tg">☾ / ☀</button></div><section class="lesson"><div class="lessonhead"><div class="k2">MODULE 02 · LESSON 2.1</div><h1 class="lt">Installing Git and VS Code</h1><div class="alt">تثبيت Git وVS Code</div></div>
+<h3>Learning objectives</h3><ul><li>Install Git on Windows.</li><li>Install Visual Studio Code.</li><li>Open the integrated terminal and choose Git Bash.</li><li>Verify the installation with <code>git --version</code>.</li></ul>
+<h3>Prerequisites</h3><p>Module 1. A Windows computer and an internet connection.</p><h3>Introduction</h3><p>Before any command works, the tools must be on your computer. This lesson installs both, then checks that Git answers.</p>
+<h3>Explanation</h3><p><b>Install Git.</b> Go to <code>git-scm.com</code> and choose <b>Download for Windows</b>. Run the installer. The default options are safe for beginners. You may choose Visual Studio Code as the default editor, and choose <b>main</b> as the name for new branches if the installer offers it. Click Next until Install, then Finish.</p><p><b>Verify.</b> Open <b>Git Bash</b> from the Start menu and run <code>git --version</code>. If Git answers with a version number, it is installed.</p><p><b>Install VS Code.</b> Go to <code>code.visualstudio.com</code>, download the Windows installer and run it. Keep <b>Add to PATH</b> enabled.</p><p><b>Open the terminal in VS Code.</b> Use the menu <b>Terminal → New Terminal</b>, or press <code>Ctrl+`</code>. In the terminal panel, use the dropdown arrow next to the <b>+</b> and choose <b>Git Bash</b> as the profile.</p>
+<h3>Real-world analogy</h3><div class="box b">Installing tools is like stocking a kitchen before you cook: nothing to cook yet, but every recipe in this course needs these tools.</div>
+<h3>Diagram</h3><figure><svg viewBox="0 0 700 84" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono,monospace" font-size="13"><rect width="700" height="84" rx="10" fill="#1F1F1F"/><rect width="700" height="26" rx="10" fill="#181818"/><circle cx="16" cy="13" r="4" fill="#FF5F57"/><circle cx="30" cy="13" r="4" fill="#FEBC2E"/><circle cx="44" cy="13" r="4" fill="#28C840"/><text x="350" y="17" fill="#9D9D9D" font-size="11" text-anchor="middle" font-family="sans-serif">Illustration · Git Bash (not a real screenshot)</text><text x="18" y="54" fill="#FFB23F" xml:space="preserve">$ git --version</text><text x="18" y="76" fill="#E8E8E8" xml:space="preserve">git version 2.x.x.windows.1</text></svg><figcaption>Figure 1 · Illustration of the expected output</figcaption></figure>
+<h3>Commands</h3><p><p>Run this in Git Bash or the VS Code terminal. <code>--version</code> is an option that asks the program to print its version and exit.</p><code>git --version</code></p>
+<h3>Common mistakes and solutions</h3><table><tr><td><b>“git is not recognized”</b></td><td>Close and reopen the terminal. If it still fails, run the Git installer again.</td></tr><tr><td><b>Opening PowerShell and expecting Bash commands.</b></td><td>Choose Git Bash in the terminal profile list.</td></tr><tr><td><b>Skipping Add to PATH for VS Code.</b></td><td>Re-run the installer and enable it.</td></tr></table>
+<h3>Practical exercise</h3><div class="box">Install Git and VS Code, open a terminal inside VS Code, select Git Bash, and run <code>git --version</code>.</div><h3>Expected result</h3><p>The terminal prints a line starting with <code>git version</code>.</p>
+<h3>Knowledge check</h3><div class="qq"><b>1. Which command checks the Git installation?</b><label><input type="radio" name="q0" data-c="0" data-w="<code>git --version</code> prints the installed version."> git check</label><label><input type="radio" name="q0" data-c="1" data-w="<code>git --version</code> prints the installed version."> git --version</label><label><input type="radio" name="q0" data-c="0" data-w="<code>git --version</code> prints the installed version."> git start</label><div class="fb"></div></div><div class="qq"><b>2. Which terminal do we use in this course?</b><label><input type="radio" name="q1" data-c="1" data-w="Git Bash gives us the same commands on Windows."> Git Bash</label><label><input type="radio" name="q1" data-c="0" data-w="Git Bash gives us the same commands on Windows."> Notepad</label><label><input type="radio" name="q1" data-c="0" data-w="Git Bash gives us the same commands on Windows."> Paint</label><div class="fb"></div></div><div class="qq"><b>3. Which shortcut opens a terminal in VS Code?</b><label><input type="radio" name="q2" data-c="0" data-w="Ctrl+` toggles the integrated terminal."> Alt+F4</label><label><input type="radio" name="q2" data-c="1" data-w="Ctrl+` toggles the integrated terminal."> Ctrl+`</label><label><input type="radio" name="q2" data-c="0" data-w="Ctrl+` toggles the integrated terminal."> Ctrl+Z</label><div class="fb"></div></div><h3>Answers</h3><ul><li>git --version — <code>git --version</code> prints the installed version.</li><li>Git Bash — Git Bash gives us the same commands on Windows.</li><li>Ctrl+` — Ctrl+` toggles the integrated terminal.</li></ul>
+<h3>Summary</h3><p>You installed Git and VS Code, opened a terminal in VS Code, chose Git Bash, and confirmed Git works.</p><h3>Key vocabulary</h3><table><tr><td><b>Terminal</b></td><td>A text window for typing commands</td></tr><tr><td><b>Git Bash</b></td><td>A Bash terminal that comes with Git for Windows</td></tr><tr><td><b>PATH</b></td><td>The list of folders Windows searches for programs</td></tr></table>
+<h3>Next lesson</h3><div class="box b"><b>Lesson 2.2 — Creating your GitHub account.</b> The tools are ready. Next you create your online home.</div></section></div><script>
+document.querySelectorAll('.qq input').forEach(i=>i.onchange=()=>{const f=i.closest('.qq').querySelector('.fb');const ok=i.dataset.c==='1';f.className='fb on '+(ok?'ok':'no');f.textContent=(ok?'✓ ':'✗ ')+i.dataset.w});
+const D=document.documentElement;function th(v){D.dataset.theme=v;try{localStorage.setItem('pw-theme',v)}catch(e){}}
+try{const s=localStorage.getItem('pw-theme');if(s)D.dataset.theme=s}catch(e){}
+document.getElementById('tg').onclick=()=>th(D.dataset.theme==='dark'?'light':'dark');
+</script><!--pw--><script src="assets/nav-data.js"></script><script src="assets/search-index.js"></script><script src="assets/platform.js"></script><!--/pw--></body></html>

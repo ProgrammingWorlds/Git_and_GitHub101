@@ -1,0 +1,64 @@
+<!doctype html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Git &amp; GitHub 101 · Fix or revert a commit</title><link rel="icon" href="assets/PW-Symbol_color-light.svg"><style>
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-Medium.ttf);font-weight:500}
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-Bold.ttf);font-weight:700}
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-Regular.ttf);font-weight:400}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-SemiBold.ttf);font-weight:600}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-Bold.ttf);font-weight:700}
+@font-face{font-family:'JetBrains Mono';src:url(assets/fonts/JetBrainsMono-Medium.ttf);font-weight:500}
+:root{--bg:#F6F5F1;--fg:#0B1430;--mut:#5A6280;--card:#fff;--line:#CDD1DE;--brand:#2C31C4;--soft:#EEEFFE;--amber:#FFB23F;--amber-s:#FFF1D9;--ok:#13693F;--err:#A12424}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0B1430;--fg:#F6F5F1;--mut:#A9AFC2;--card:#1B2340;--line:#2E3550;--brand:#8C90FF;--soft:#1A1E73;--amber-s:#2E2410}}
+:root[data-theme=dark]{--bg:#0B1430;--fg:#F6F5F1;--mut:#A9AFC2;--card:#1B2340;--line:#2E3550;--brand:#8C90FF;--soft:#1A1E73;--amber-s:#2E2410}
+h2,h3{break-after:avoid}tr{break-inside:avoid}figure,.box,.qq{break-inside:avoid}*{box-sizing:border-box}html{background:var(--bg)}
+body{margin:0;color:var(--fg);font:500 15px/1.65 Manrope,'IBM Plex Sans Arabic',sans-serif}
+[lang=ar] body,body[lang=ar]{font-family:'IBM Plex Sans Arabic',Manrope,sans-serif;font-weight:400;line-height:1.85}
+.cover{height:297mm;width:210mm;background:#0B1430 url(assets/pw-background-ink_1920x1080.png) right center/auto 100% no-repeat;color:#fff;padding:22mm 20mm;display:flex;flex-direction:column;justify-content:space-between;page:cover;break-after:page}
+.cover img{height:46mm;align-self:flex-start}
+.cover .k{font:600 12px var(--mono,'JetBrains Mono');letter-spacing:.14em;color:#FFB23F}
+[lang=ar] .cover .k{letter-spacing:0;font-family:'IBM Plex Sans Arabic';font-size:14px}
+.cover h1{font-size:60px;line-height:1.05;font-weight:800;letter-spacing:-.025em;margin:10px 0 14px;max-width:150mm}
+[lang=ar] .cover h1{font-weight:700;letter-spacing:0}
+.cover p{font-size:20px;color:#BBBDF9;margin:0;max-width:120mm}
+.cover .s{font:600 12px 'JetBrains Mono';letter-spacing:.12em;color:#A9AFC2}
+.opener{height:297mm;width:210mm;background:#0B1430 url(assets/pw-pattern-Module-Field_ink_1024.png) right bottom/150mm no-repeat;color:#fff;padding:28mm 20mm;display:flex;flex-direction:column;justify-content:flex-end;page:cover;break-after:page}
+.opener .n{font:800 120px/1 Manrope;color:#FFB23F;margin-bottom:8px}[lang=ar] .opener .n{font-family:'IBM Plex Sans Arabic';font-weight:700;font-size:96px}
+.opener h2{font-size:42px;line-height:1.12;font-weight:800;margin:0 0 12px;color:#fff}.opener p{color:#BBBDF9;font-size:18px;max-width:130mm;margin:0 0 36mm}
+.bgp{position:fixed;inset-inline-end:0;bottom:0;width:70mm;height:70mm;background:url(assets/pw-pattern-Module-Field_paper_1024.png) right bottom/cover no-repeat;opacity:.55;z-index:-1}
+[dir=rtl] .bgp{transform:scaleX(-1)}
+.lessonhead{border-bottom:3px solid var(--amber);padding-bottom:14px;margin-bottom:8px}
+.k2{font:600 11px 'JetBrains Mono';letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}[lang=ar] .k2{font-family:'IBM Plex Sans Arabic';letter-spacing:0;text-transform:none;font-size:13px}
+h1.lt{font-size:34px;line-height:1.1;font-weight:800;letter-spacing:-.02em;margin:6px 0 2px}[lang=ar] h1.lt{font-weight:700;letter-spacing:0}
+.alt{color:var(--mut);font-size:15px;direction:ltr;text-align:start}[lang=ar] .alt{direction:ltr;text-align:right;font-family:Manrope}
+h3{font-size:18px;font-weight:700;margin:22px 0 6px;color:var(--brand);display:flex;align-items:center;gap:10px}
+h3:before{content:"";width:10px;height:10px;background:var(--amber);border-radius:2px}
+ul{padding-inline-start:22px;margin:6px 0}li{margin:3px 0}
+code{font:500 .88em 'JetBrains Mono',monospace;background:var(--soft);border-radius:4px;padding:1px 6px;direction:ltr;unicode-bidi:isolate;display:inline-block}
+.box{border-radius:12px;padding:12px 16px;border-inline-start:4px solid var(--amber);background:var(--amber-s);margin:8px 0}
+.box.b{border-color:var(--brand);background:var(--soft)}
+figure{margin:12px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}figure svg{width:100%;height:auto;display:block;direction:ltr}
+figcaption{font-size:12px;color:var(--mut);padding-top:6px}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;font-size:13px}th,td{padding:8px 12px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top}th{background:var(--soft)}
+.qq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0;break-inside:avoid}
+.qq label{display:block;padding:6px 8px;border-radius:8px;cursor:pointer}.qq label:hover{background:var(--soft)}
+.fb{margin-top:6px;font-size:13px;display:none}.fb.on{display:block}.fb.ok{color:var(--ok)}.fb.no{color:var(--err)}
+.print .qq label{cursor:default}.wrap{max-width:820px;margin:0 auto;padding:24px 20px 80px}
+.tools{display:flex;gap:8px;justify-content:flex-end;margin-bottom:12px}.tools button{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;padding:6px 14px;font:700 13px Manrope,'IBM Plex Sans Arabic';cursor:pointer}
+@page{size:A4;margin:18mm 18mm 20mm}@page cover{margin:0}
+@media print{html{background:var(--bg)}.tools{display:none}.wrap{padding:0;max-width:none}h3,figure,table,.box{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style><!--pw--><link rel="stylesheet" href="assets/platform.css"><!--/pw--></head><body lang="en"><div class="wrap"><div class="tools"><a href="lesson-10-1-en.html"><button>←</button></a><a href="lesson-10-3-en.html"><button>→</button></a><a href="lesson-10-2-ar.html"><button>العربية</button></a><button id="tg">☾ / ☀</button></div><section class="lesson"><div class="lessonhead"><div class="k2">MODULE 10 · LESSON 10.2</div><h1 class="lt">Fix or revert a commit</h1><div class="alt">تعديل commit أو عكسه</div></div>
+<h3>Learning objectives</h3><ul><li>Amend the last commit.</li><li>Revert a commit.</li><li>Choose between amend and revert.</li></ul>
+<h3>Prerequisites</h3><p>Lesson 10.1.</p><h3>Introduction</h3><p>Sometimes the mistake is already in a commit. The right tool depends on whether you pushed it.</p>
+<h3>Explanation</h3><p><b>Not pushed yet.</b> <code>git commit --amend -m "Better message"</code> replaces the last commit. To add a forgotten file, <code>git add file</code> first, then amend.</p><p>Amend <b>rewrites</b> the commit (it gets a new ID). Never amend a commit others may already have.</p><p><b>Already pushed or shared.</b> <code>git revert HEAD</code> creates a <b>new commit</b> that cancels the old one. History stays honest and safe for everyone.</p><p>To revert an older commit, use its ID from <code>git log --oneline</code>: <code>git revert 8d2e5b1</code>.</p><p>Reverts can conflict; resolve as in Lesson 7.3 and run <code>git revert --continue</code>.</p><p>After a revert, <code>git push</code> as usual.</p>
+<h3>Real-world analogy</h3><div class="box b">Amend is fixing a typo in a letter before posting it. Revert is sending a second letter that cancels the first.</div>
+<h3>Diagram</h3><figure><svg viewBox="0 0 700 216" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono,monospace" font-size="13"><rect width="700" height="216" rx="10" fill="#1F1F1F"/><rect width="700" height="26" rx="10" fill="#181818"/><circle cx="16" cy="13" r="4" fill="#FF5F57"/><circle cx="30" cy="13" r="4" fill="#FEBC2E"/><circle cx="44" cy="13" r="4" fill="#28C840"/><text x="350" y="17" fill="#9D9D9D" font-size="11" text-anchor="middle" font-family="sans-serif">Illustration · Git Bash (not a real screenshot)</text><text x="18" y="54" fill="#FFB23F" xml:space="preserve">$ git commit --amend -m "Add about page"</text><text x="18" y="76" fill="#E8E8E8" xml:space="preserve">[main 8d2e5b1] Add about page</text><text x="18" y="98" fill="#FFB23F" xml:space="preserve">$ git revert HEAD --no-edit</text><text x="18" y="120" fill="#E8E8E8" xml:space="preserve">[main 1fa09c3] Revert "Add about page"</text><text x="18" y="142" fill="#E8E8E8" xml:space="preserve"> 1 file changed, 8 deletions(-)</text><text x="18" y="164" fill="#FFB23F" xml:space="preserve">$ git log --oneline</text><text x="18" y="186" fill="#E8E8E8" xml:space="preserve">1fa09c3 Revert "Add about page"</text><text x="18" y="208" fill="#E8E8E8" xml:space="preserve">8d2e5b1 Add about page</text></svg><figcaption>Figure 1 · Illustration: amend and revert</figcaption></figure>
+<h3>Commands</h3><p><code>git commit --amend -m "msg"</code><br><code>git revert HEAD</code><br><code>git revert COMMIT-ID</code><p>Figure 1 shows both.</p></p>
+<h3>Common mistakes and solutions</h3><table><tr><td><b>Amending after push.</b></td><td>Use revert; amending needs a force push, which is risky.</td></tr><tr><td><b>Reverting the wrong ID.</b></td><td>Check <code>git log --oneline</code>.</td></tr><tr><td><b>Expecting revert to delete history.</b></td><td>It adds a new commit.</td></tr></table>
+<h3>Practical exercise</h3><div class="box">Make a commit with a typo in the message, amend it. Then revert your last commit.</div><h3>Expected result</h3><p><code>git log --oneline</code> shows the revert commit on top.</p>
+<h3>Knowledge check</h3><div class="qq"><b>1. Which is safe for pushed commits?</b><label><input type="radio" name="q0" data-c="0" data-w="Revert adds a new commit."> git reset --hard</label><label><input type="radio" name="q0" data-c="1" data-w="Revert adds a new commit."> git revert</label><label><input type="radio" name="q0" data-c="0" data-w="Revert adds a new commit."> git commit --amend</label><div class="fb"></div></div><div class="qq"><b>2. What does amend change?</b><label><input type="radio" name="q1" data-c="1" data-w="It rewrites it."> The last commit</label><label><input type="radio" name="q1" data-c="0" data-w="It rewrites it."> All commits</label><label><input type="radio" name="q1" data-c="0" data-w="It rewrites it."> The remote</label><div class="fb"></div></div><div class="qq"><b>3. Does revert delete history?</b><label><input type="radio" name="q2" data-c="0" data-w="It adds a cancelling commit."> Only locally</label><label><input type="radio" name="q2" data-c="1" data-w="It adds a cancelling commit."> No</label><label><input type="radio" name="q2" data-c="0" data-w="It adds a cancelling commit."> Yes</label><div class="fb"></div></div><h3>Answers</h3><ul><li>git revert — Revert adds a new commit.</li><li>The last commit — It rewrites it.</li><li>No — It adds a cancelling commit.</li></ul>
+<h3>Summary</h3><p>Amend before pushing, revert after pushing.</p><h3>Key vocabulary</h3><table><tr><td><b>amend</b></td><td>Replace the last commit</td></tr><tr><td><b>revert</b></td><td>Commit that cancels another</td></tr><tr><td><b>commit ID</b></td><td>Short hash like 8d2e5b1</td></tr></table>
+<h3>Next lesson</h3><div class="box b"><b>Lesson 10.3 — Reset, reflog and common errors.</b></div></section></div><script>
+document.querySelectorAll('.qq input').forEach(i=>i.onchange=()=>{const f=i.closest('.qq').querySelector('.fb');const ok=i.dataset.c==='1';f.className='fb on '+(ok?'ok':'no');f.textContent=(ok?'✓ ':'✗ ')+i.dataset.w});
+const D=document.documentElement;function th(v){D.dataset.theme=v;try{localStorage.setItem('pw-theme',v)}catch(e){}}
+try{const s=localStorage.getItem('pw-theme');if(s)D.dataset.theme=s}catch(e){}
+document.getElementById('tg').onclick=()=>th(D.dataset.theme==='dark'?'light':'dark');
+</script><!--pw--><script src="assets/nav-data.js"></script><script src="assets/search-index.js"></script><script src="assets/platform.js"></script><!--/pw--></body></html>

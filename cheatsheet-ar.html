@@ -1,0 +1,53 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Git &amp; GitHub 101 · ورقة أوامر Git</title><link rel="icon" href="assets/PW-Symbol_color-light.svg"><style>
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-Medium.ttf);font-weight:500}
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-Bold.ttf);font-weight:700}
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-Regular.ttf);font-weight:400}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-SemiBold.ttf);font-weight:600}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-Bold.ttf);font-weight:700}
+@font-face{font-family:'JetBrains Mono';src:url(assets/fonts/JetBrainsMono-Medium.ttf);font-weight:500}
+:root{--bg:#F6F5F1;--fg:#0B1430;--mut:#5A6280;--card:#fff;--line:#CDD1DE;--brand:#2C31C4;--soft:#EEEFFE;--amber:#FFB23F;--amber-s:#FFF1D9;--ok:#13693F;--err:#A12424}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0B1430;--fg:#F6F5F1;--mut:#A9AFC2;--card:#1B2340;--line:#2E3550;--brand:#8C90FF;--soft:#1A1E73;--amber-s:#2E2410}}
+:root[data-theme=dark]{--bg:#0B1430;--fg:#F6F5F1;--mut:#A9AFC2;--card:#1B2340;--line:#2E3550;--brand:#8C90FF;--soft:#1A1E73;--amber-s:#2E2410}
+h2,h3{break-after:avoid}tr{break-inside:avoid}figure,.box,.qq{break-inside:avoid}*{box-sizing:border-box}html{background:var(--bg)}
+body{margin:0;color:var(--fg);font:500 15px/1.65 Manrope,'IBM Plex Sans Arabic',sans-serif}
+[lang=ar] body,body[lang=ar]{font-family:'IBM Plex Sans Arabic',Manrope,sans-serif;font-weight:400;line-height:1.85}
+.cover{height:297mm;width:210mm;background:#0B1430 url(assets/pw-background-ink_1920x1080.png) right center/auto 100% no-repeat;color:#fff;padding:22mm 20mm;display:flex;flex-direction:column;justify-content:space-between;page:cover;break-after:page}
+.cover img{height:46mm;align-self:flex-start}
+.cover .k{font:600 12px var(--mono,'JetBrains Mono');letter-spacing:.14em;color:#FFB23F}
+[lang=ar] .cover .k{letter-spacing:0;font-family:'IBM Plex Sans Arabic';font-size:14px}
+.cover h1{font-size:60px;line-height:1.05;font-weight:800;letter-spacing:-.025em;margin:10px 0 14px;max-width:150mm}
+[lang=ar] .cover h1{font-weight:700;letter-spacing:0}
+.cover p{font-size:20px;color:#BBBDF9;margin:0;max-width:120mm}
+.cover .s{font:600 12px 'JetBrains Mono';letter-spacing:.12em;color:#A9AFC2}
+.opener{height:297mm;width:210mm;background:#0B1430 url(assets/pw-pattern-Module-Field_ink_1024.png) right bottom/150mm no-repeat;color:#fff;padding:28mm 20mm;display:flex;flex-direction:column;justify-content:flex-end;page:cover;break-after:page}
+.opener .n{font:800 120px/1 Manrope;color:#FFB23F;margin-bottom:8px}[lang=ar] .opener .n{font-family:'IBM Plex Sans Arabic';font-weight:700;font-size:96px}
+.opener h2{font-size:42px;line-height:1.12;font-weight:800;margin:0 0 12px;color:#fff}.opener p{color:#BBBDF9;font-size:18px;max-width:130mm;margin:0 0 36mm}
+.bgp{position:fixed;inset-inline-end:0;bottom:0;width:70mm;height:70mm;background:url(assets/pw-pattern-Module-Field_paper_1024.png) right bottom/cover no-repeat;opacity:.55;z-index:-1}
+[dir=rtl] .bgp{transform:scaleX(-1)}
+.lessonhead{border-bottom:3px solid var(--amber);padding-bottom:14px;margin-bottom:8px}
+.k2{font:600 11px 'JetBrains Mono';letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}[lang=ar] .k2{font-family:'IBM Plex Sans Arabic';letter-spacing:0;text-transform:none;font-size:13px}
+h1.lt{font-size:34px;line-height:1.1;font-weight:800;letter-spacing:-.02em;margin:6px 0 2px}[lang=ar] h1.lt{font-weight:700;letter-spacing:0}
+.alt{color:var(--mut);font-size:15px;direction:ltr;text-align:start}[lang=ar] .alt{direction:ltr;text-align:right;font-family:Manrope}
+h3{font-size:18px;font-weight:700;margin:22px 0 6px;color:var(--brand);display:flex;align-items:center;gap:10px}
+h3:before{content:"";width:10px;height:10px;background:var(--amber);border-radius:2px}
+ul{padding-inline-start:22px;margin:6px 0}li{margin:3px 0}
+code{font:500 .88em 'JetBrains Mono',monospace;background:var(--soft);border-radius:4px;padding:1px 6px;direction:ltr;unicode-bidi:isolate;display:inline-block}
+.box{border-radius:12px;padding:12px 16px;border-inline-start:4px solid var(--amber);background:var(--amber-s);margin:8px 0}
+.box.b{border-color:var(--brand);background:var(--soft)}
+figure{margin:12px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}figure svg{width:100%;height:auto;display:block;direction:ltr}
+figcaption{font-size:12px;color:var(--mut);padding-top:6px}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;font-size:13px}th,td{padding:8px 12px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top}th{background:var(--soft)}
+.qq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0;break-inside:avoid}
+.qq label{display:block;padding:6px 8px;border-radius:8px;cursor:pointer}.qq label:hover{background:var(--soft)}
+.fb{margin-top:6px;font-size:13px;display:none}.fb.on{display:block}.fb.ok{color:var(--ok)}.fb.no{color:var(--err)}
+.print .qq label{cursor:default}.wrap{max-width:820px;margin:0 auto;padding:24px 20px 80px}
+.tools{display:flex;gap:8px;justify-content:flex-end;margin-bottom:12px}.tools button{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;padding:6px 14px;font:700 13px Manrope,'IBM Plex Sans Arabic';cursor:pointer}
+@page{size:A4;margin:18mm 18mm 20mm}@page cover{margin:0}
+@media print{html{background:var(--bg)}.tools{display:none}.wrap{padding:0;max-width:none}h3,figure,table,.box{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style><!--pw--><link rel="stylesheet" href="assets/platform.css"><!--/pw--></head><body lang="ar"><div class="wrap"><div class="tools"><a href="index-ar.html"><button>⌂</button></a><a href="cheatsheet-en.html"><button>English</button></a><button id="tg">☾ / ☀</button></div><section class="lesson"><div class="lessonhead"><div class="k2">مصدر</div><h1 class="lt">ورقة أوامر Git</h1><div class="alt">Windows · Git Bash · VS Code</div></div><h3>الإعداد</h3><table><tr><th>الأمر</th><th>ماذا يفعل</th></tr><tr><td><code>git --version</code></td><td>تحقق من تثبيت Git</td></tr><tr><td><code>git config --global user.name &quot;Your Name&quot;</code></td><td>اضبط اسمك</td></tr><tr><td><code>git config --global user.email &quot;you@example.com&quot;</code></td><td>اضبط بريدك (بريد GitHub)</td></tr><tr><td><code>git config --global --list</code></td><td>اعرض إعداداتك</td></tr></table><h3>البداية</h3><table><tr><th>الأمر</th><th>ماذا يفعل</th></tr><tr><td><code>git init -b main</code></td><td>أنشئ مستودعًا بفرع main</td></tr><tr><td><code>git clone URL</code></td><td>انسخ مستودعًا بعيدًا</td></tr><tr><td><code>git status</code></td><td>اعرض الملفات المتغيرة والمُجهّزة وغير المتتبَّعة</td></tr></table><h3>اللقطات</h3><table><tr><th>الأمر</th><th>ماذا يفعل</th></tr><tr><td><code>git add FILE</code></td><td>جهّز ملفًا واحدًا (staging)</td></tr><tr><td><code>git add .</code></td><td>جهّز كل شيء في هذا المجلد وما تحته</td></tr><tr><td><code>git add -A</code></td><td>جهّز كل التغييرات في المستودع كله</td></tr><tr><td><code>git commit -m &quot;message&quot;</code></td><td>احفظ لقطة برسالة</td></tr><tr><td><code>git diff</code></td><td>اعرض التغييرات غير المجهّزة</td></tr><tr><td><code>git diff --staged</code></td><td>اعرض التغييرات المجهّزة</td></tr></table><h3>السجل</h3><table><tr><th>الأمر</th><th>ماذا يفعل</th></tr><tr><td><code>git log --oneline</code></td><td>سجل مختصر، سطر لكل commit</td></tr><tr><td><code>git show COMMIT</code></td><td>اعرض commit واحدًا</td></tr></table><h3>الفروع</h3><table><tr><th>الأمر</th><th>ماذا يفعل</th></tr><tr><td><code>git branch</code></td><td>اعرض الفروع المحلية</td></tr><tr><td><code>git switch -c NAME</code></td><td>أنشئ فرعًا وانتقل إليه</td></tr><tr><td><code>git switch NAME</code></td><td>انتقل إلى فرع</td></tr><tr><td><code>git merge NAME</code></td><td>ادمج NAME في الفرع الحالي</td></tr><tr><td><code>git merge --abort</code></td><td>ألغِ دمجًا متعارضًا</td></tr><tr><td><code>git branch -d NAME</code></td><td>احذف فرعًا مدموجًا</td></tr></table><h3>البعيد</h3><table><tr><th>الأمر</th><th>ماذا يفعل</th></tr><tr><td><code>git remote add origin URL</code></td><td>اربط remote باسم origin</td></tr><tr><td><code>git remote -v</code></td><td>اعرض الـ remotes</td></tr><tr><td><code>git push -u origin main</code></td><td>أول رفع مع ضبط upstream</td></tr><tr><td><code>git push</code></td><td>ارفع إلى الـ upstream</td></tr><tr><td><code>git fetch</code></td><td>نزّل التغييرات البعيدة دون دمج</td></tr><tr><td><code>git pull</code></td><td>اجلب وادمج</td></tr></table><h3>التراجع</h3><table><tr><th>الأمر</th><th>ماذا يفعل</th></tr><tr><td><code>git restore FILE</code></td><td>ارمِ تعديلات ملف (لا رجعة)</td></tr><tr><td><code>git restore --staged FILE</code></td><td>أخرج ملفًا من staging</td></tr><tr><td><code>git stash push -m &quot;msg&quot;</code></td><td>احفظ التعديلات جانبًا</td></tr><tr><td><code>git stash pop</code></td><td>أعد التعديلات المخزنة</td></tr><tr><td><code>git commit --amend -m &quot;msg&quot;</code></td><td>استبدل آخر commit (قبل الرفع)</td></tr><tr><td><code>git revert COMMIT</code></td><td>أنشئ commit يلغي آخر</td></tr><tr><td><code>git reset --soft HEAD~1</code></td><td>ألغِ آخر commit وأبقِ staging</td></tr><tr><td><code>git reflog</code></td><td>اعرض أماكن HEAD السابقة</td></tr><tr><td><code>git rm --cached FILE</code></td><td>أوقف تتبع ملف وأبقه على القرص</td></tr></table></section></div><script>
+document.querySelectorAll('.qq input').forEach(i=>i.onchange=()=>{const f=i.closest('.qq').querySelector('.fb');const ok=i.dataset.c==='1';f.className='fb on '+(ok?'ok':'no');f.textContent=(ok?'✓ ':'✗ ')+i.dataset.w});
+const D=document.documentElement;function th(v){D.dataset.theme=v;try{localStorage.setItem('pw-theme',v)}catch(e){}}
+try{const s=localStorage.getItem('pw-theme');if(s)D.dataset.theme=s}catch(e){}
+document.getElementById('tg').onclick=()=>th(D.dataset.theme==='dark'?'light':'dark');
+</script><!--pw--><script src="assets/nav-data.js"></script><script src="assets/search-index.js"></script><script src="assets/platform.js"></script><!--/pw--></body></html>

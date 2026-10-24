@@ -1,0 +1,64 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Git &amp; GitHub 101 · جلب التغييرات (Fetch)</title><link rel="icon" href="assets/PW-Symbol_color-light.svg"><style>
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-Medium.ttf);font-weight:500}
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-Bold.ttf);font-weight:700}
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-Regular.ttf);font-weight:400}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-SemiBold.ttf);font-weight:600}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-Bold.ttf);font-weight:700}
+@font-face{font-family:'JetBrains Mono';src:url(assets/fonts/JetBrainsMono-Medium.ttf);font-weight:500}
+:root{--bg:#F6F5F1;--fg:#0B1430;--mut:#5A6280;--card:#fff;--line:#CDD1DE;--brand:#2C31C4;--soft:#EEEFFE;--amber:#FFB23F;--amber-s:#FFF1D9;--ok:#13693F;--err:#A12424}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0B1430;--fg:#F6F5F1;--mut:#A9AFC2;--card:#1B2340;--line:#2E3550;--brand:#8C90FF;--soft:#1A1E73;--amber-s:#2E2410}}
+:root[data-theme=dark]{--bg:#0B1430;--fg:#F6F5F1;--mut:#A9AFC2;--card:#1B2340;--line:#2E3550;--brand:#8C90FF;--soft:#1A1E73;--amber-s:#2E2410}
+h2,h3{break-after:avoid}tr{break-inside:avoid}figure,.box,.qq{break-inside:avoid}*{box-sizing:border-box}html{background:var(--bg)}
+body{margin:0;color:var(--fg);font:500 15px/1.65 Manrope,'IBM Plex Sans Arabic',sans-serif}
+[lang=ar] body,body[lang=ar]{font-family:'IBM Plex Sans Arabic',Manrope,sans-serif;font-weight:400;line-height:1.85}
+.cover{height:297mm;width:210mm;background:#0B1430 url(assets/pw-background-ink_1920x1080.png) right center/auto 100% no-repeat;color:#fff;padding:22mm 20mm;display:flex;flex-direction:column;justify-content:space-between;page:cover;break-after:page}
+.cover img{height:46mm;align-self:flex-start}
+.cover .k{font:600 12px var(--mono,'JetBrains Mono');letter-spacing:.14em;color:#FFB23F}
+[lang=ar] .cover .k{letter-spacing:0;font-family:'IBM Plex Sans Arabic';font-size:14px}
+.cover h1{font-size:60px;line-height:1.05;font-weight:800;letter-spacing:-.025em;margin:10px 0 14px;max-width:150mm}
+[lang=ar] .cover h1{font-weight:700;letter-spacing:0}
+.cover p{font-size:20px;color:#BBBDF9;margin:0;max-width:120mm}
+.cover .s{font:600 12px 'JetBrains Mono';letter-spacing:.12em;color:#A9AFC2}
+.opener{height:297mm;width:210mm;background:#0B1430 url(assets/pw-pattern-Module-Field_ink_1024.png) right bottom/150mm no-repeat;color:#fff;padding:28mm 20mm;display:flex;flex-direction:column;justify-content:flex-end;page:cover;break-after:page}
+.opener .n{font:800 120px/1 Manrope;color:#FFB23F;margin-bottom:8px}[lang=ar] .opener .n{font-family:'IBM Plex Sans Arabic';font-weight:700;font-size:96px}
+.opener h2{font-size:42px;line-height:1.12;font-weight:800;margin:0 0 12px;color:#fff}.opener p{color:#BBBDF9;font-size:18px;max-width:130mm;margin:0 0 36mm}
+.bgp{position:fixed;inset-inline-end:0;bottom:0;width:70mm;height:70mm;background:url(assets/pw-pattern-Module-Field_paper_1024.png) right bottom/cover no-repeat;opacity:.55;z-index:-1}
+[dir=rtl] .bgp{transform:scaleX(-1)}
+.lessonhead{border-bottom:3px solid var(--amber);padding-bottom:14px;margin-bottom:8px}
+.k2{font:600 11px 'JetBrains Mono';letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}[lang=ar] .k2{font-family:'IBM Plex Sans Arabic';letter-spacing:0;text-transform:none;font-size:13px}
+h1.lt{font-size:34px;line-height:1.1;font-weight:800;letter-spacing:-.02em;margin:6px 0 2px}[lang=ar] h1.lt{font-weight:700;letter-spacing:0}
+.alt{color:var(--mut);font-size:15px;direction:ltr;text-align:start}[lang=ar] .alt{direction:ltr;text-align:right;font-family:Manrope}
+h3{font-size:18px;font-weight:700;margin:22px 0 6px;color:var(--brand);display:flex;align-items:center;gap:10px}
+h3:before{content:"";width:10px;height:10px;background:var(--amber);border-radius:2px}
+ul{padding-inline-start:22px;margin:6px 0}li{margin:3px 0}
+code{font:500 .88em 'JetBrains Mono',monospace;background:var(--soft);border-radius:4px;padding:1px 6px;direction:ltr;unicode-bidi:isolate;display:inline-block}
+.box{border-radius:12px;padding:12px 16px;border-inline-start:4px solid var(--amber);background:var(--amber-s);margin:8px 0}
+.box.b{border-color:var(--brand);background:var(--soft)}
+figure{margin:12px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}figure svg{width:100%;height:auto;display:block;direction:ltr}
+figcaption{font-size:12px;color:var(--mut);padding-top:6px}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;font-size:13px}th,td{padding:8px 12px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top}th{background:var(--soft)}
+.qq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0;break-inside:avoid}
+.qq label{display:block;padding:6px 8px;border-radius:8px;cursor:pointer}.qq label:hover{background:var(--soft)}
+.fb{margin-top:6px;font-size:13px;display:none}.fb.on{display:block}.fb.ok{color:var(--ok)}.fb.no{color:var(--err)}
+.print .qq label{cursor:default}.wrap{max-width:820px;margin:0 auto;padding:24px 20px 80px}
+.tools{display:flex;gap:8px;justify-content:flex-end;margin-bottom:12px}.tools button{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;padding:6px 14px;font:700 13px Manrope,'IBM Plex Sans Arabic';cursor:pointer}
+@page{size:A4;margin:18mm 18mm 20mm}@page cover{margin:0}
+@media print{html{background:var(--bg)}.tools{display:none}.wrap{padding:0;max-width:none}h3,figure,table,.box{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style><!--pw--><link rel="stylesheet" href="assets/platform.css"><!--/pw--></head><body lang="ar"><div class="wrap"><div class="tools"><a href="lesson-8-1-ar.html"><button>→</button></a><a href="lesson-8-3-ar.html"><button>←</button></a><a href="lesson-8-2-en.html"><button>English</button></a><button id="tg">☾ / ☀</button></div><section class="lesson"><div class="lessonhead"><div class="k2">الوحدة 08 · الدرس 8.2</div><h1 class="lt">جلب التغييرات (Fetch)</h1><div class="alt">Fetching changes</div></div>
+<h3>أهداف التعلم</h3><ul><li>أن تشرح fetch.</li><li>أن تقارن المحلي بالبعيد.</li><li>أن تقرأ «behind» و«ahead».</li></ul>
+<h3>المتطلبات المسبقة</h3><p>الدرس 8.1.</p><h3>مقدمة</h3><p>الـ fetch ينزّل العمل الجديد من GitHub دون تغيير ملفاتك. هو الطريقة الآمنة للنظر أولًا.</p>
+<h3>الشرح</h3><p>عدّل أحدهم ملف README على GitHub. جهازك لا يعرف بعد.</p><p><code>git fetch</code> يحدّث <b>فروع التتبع البعيدة</b> مثل <code>origin/main</code>. أما <code>main</code> وملفاتك فلا يتغيران.</p><p><code>git status</code> يقول الآن إن فرعك <b>behind</b> origin/main بـ commit واحد.</p><p>افحص بـ <code>git log --oneline main..origin/main</code> (ما لا تملكه) أو <code>git diff main origin/main</code>.</p><p>«Ahead» تعني أن لديك commits لترفعها. و«behind» تعني أن عند GitHub commits لتسحبها. وإن حدثا معًا فهو «diverged».</p><p>في VS Code يعرض شريط الحالة أسهمًا بأعداد. وقائمة Source Control (…) فيها أمر <b>Fetch</b>.</p>
+<h3>تشبيه من الحياة</h3><div class="box b">الـ fetch مثل فحص صندوق البريد وقراءة الرسائل عند الباب دون إدخالها إلى غرفتك.</div>
+<h3>مخطط توضيحي</h3><figure><svg viewBox="0 0 700 172" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono,monospace" font-size="13"><rect width="700" height="172" rx="10" fill="#1F1F1F"/><rect width="700" height="26" rx="10" fill="#181818"/><circle cx="16" cy="13" r="4" fill="#FF5F57"/><circle cx="30" cy="13" r="4" fill="#FEBC2E"/><circle cx="44" cy="13" r="4" fill="#28C840"/><text x="350" y="17" fill="#9D9D9D" font-size="11" text-anchor="middle" font-family="sans-serif">رسم توضيحي · Git Bash (ليس لقطة حقيقية)</text><text x="18" y="54" fill="#FFB23F" xml:space="preserve">$ git fetch</text><text x="18" y="76" fill="#E8E8E8" xml:space="preserve">remote: Enumerating objects: 5, done.</text><text x="18" y="98" fill="#E8E8E8" xml:space="preserve">From https://github.com/YOUR-USERNAME/my-first-project</text><text x="18" y="120" fill="#E8E8E8" xml:space="preserve">   a41b7e9..c93d2f1  main       -> origin/main</text><text x="18" y="142" fill="#FFB23F" xml:space="preserve">$ git status</text><text x="18" y="164" fill="#E8E8E8" xml:space="preserve">Your branch is behind 'origin/main' by 1 commit, and can be fast-forwarded.</text></svg><figcaption>الشكل 1 · رسم توضيحي: fetch ثم status</figcaption></figure>
+<h3>الأوامر</h3><p><code>git fetch</code><br><code>git status</code><br><code>git log --oneline main..origin/main</code><p>الشكل 1 يعرض الخرج بعد fetch.</p></p>
+<h3>أخطاء شائعة وحلولها</h3><table><tr><td><b>الظن أن fetch يغيّر ملفاتك.</b></td><td>لا يغيّرها. يحدّث origin/* فقط.</td></tr><tr><td><b>نسيان fetch قبل المقارنة.</b></td><td>يستخدم status آخر نسخة معروفة من origin.</td></tr><tr><td><b>الذعر من «diverged».</b></td><td>اسحب وحلّ التعارض (الدرس 8.3).</td></tr></table>
+<h3>تمرين عملي</h3><div class="box">عدّل README.md على GitHub (أيقونة القلم) واحفظ هناك، ثم نفّذ fetch محليًا.</div><h3>النتيجة المتوقعة</h3><p>يقول <code>git status</code> إنك behind بـ commit واحد وREADME عندك لم يتغير.</p>
+<h3>اختبر فهمك</h3><div class="qq"><b>1. هل يغيّر fetch ملفات العمل؟</b><label><input type="radio" name="q0" data-c="0" data-w="يحدّث فروع التتبع فقط."> في Linux فقط</label><label><input type="radio" name="q0" data-c="1" data-w="يحدّث فروع التتبع فقط."> لا</label><label><input type="radio" name="q0" data-c="0" data-w="يحدّث فروع التتبع فقط."> نعم دائمًا</label><div class="fb"></div></div><div class="qq"><b>2. ماذا يعني «behind by 1»؟</b><label><input type="radio" name="q1" data-c="1" data-w="تحتاج pull."> عند GitHub commit ينقصك</label><label><input type="radio" name="q1" data-c="0" data-w="تحتاج pull."> عندك commit زائد</label><label><input type="radio" name="q1" data-c="0" data-w="تحتاج pull."> Git معطّل</label><div class="fb"></div></div><div class="qq"><b>3. أي فرع يحدّثه fetch؟</b><label><input type="radio" name="q2" data-c="0" data-w="فرع التتبع البعيد."> feature</label><label><input type="radio" name="q2" data-c="1" data-w="فرع التتبع البعيد."> origin/main</label><label><input type="radio" name="q2" data-c="0" data-w="فرع التتبع البعيد."> main</label><div class="fb"></div></div><h3>الإجابات</h3><ul><li>لا — يحدّث فروع التتبع فقط.</li><li>عند GitHub commit ينقصك — تحتاج pull.</li><li>origin/main — فرع التتبع البعيد.</li></ul>
+<h3>الخلاصة</h3><p>الـ fetch ينظر إلى GitHub بأمان. ثم يخبرك status إن كنت behind أو ahead.</p><h3>مصطلحات أساسية</h3><table><tr><td><b>fetch</b></td><td>تنزيل تغييرات بعيدة دون دمج</td></tr><tr><td><b>behind</b></td><td>عند البعيد commits تنقصك</td></tr><tr><td><b>ahead</b></td><td>عندك commits لترفعها</td></tr></table>
+<h3>الدرس التالي</h3><div class="box b"><b>الدرس 8.3 — السحب (Pull).</b></div></section></div><script>
+document.querySelectorAll('.qq input').forEach(i=>i.onchange=()=>{const f=i.closest('.qq').querySelector('.fb');const ok=i.dataset.c==='1';f.className='fb on '+(ok?'ok':'no');f.textContent=(ok?'✓ ':'✗ ')+i.dataset.w});
+const D=document.documentElement;function th(v){D.dataset.theme=v;try{localStorage.setItem('pw-theme',v)}catch(e){}}
+try{const s=localStorage.getItem('pw-theme');if(s)D.dataset.theme=s}catch(e){}
+document.getElementById('tg').onclick=()=>th(D.dataset.theme==='dark'?'light':'dark');
+</script><!--pw--><script src="assets/nav-data.js"></script><script src="assets/search-index.js"></script><script src="assets/platform.js"></script><!--/pw--></body></html>

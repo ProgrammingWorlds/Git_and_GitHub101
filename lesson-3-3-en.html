@@ -1,0 +1,87 @@
+<!doctype html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Git &amp; GitHub 101 · Tracking your first files</title><link rel="icon" href="assets/PW-Symbol_color-light.svg"><style>
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-Medium.ttf);font-weight:500}
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-Bold.ttf);font-weight:700}
+@font-face{font-family:Manrope;src:url(assets/fonts/Manrope-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-Regular.ttf);font-weight:400}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-SemiBold.ttf);font-weight:600}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url(assets/fonts/IBMPlexSansArabic-Bold.ttf);font-weight:700}
+@font-face{font-family:'JetBrains Mono';src:url(assets/fonts/JetBrainsMono-Medium.ttf);font-weight:500}
+:root{--bg:#F6F5F1;--fg:#0B1430;--mut:#5A6280;--card:#fff;--line:#CDD1DE;--brand:#2C31C4;--soft:#EEEFFE;--amber:#FFB23F;--amber-s:#FFF1D9;--ok:#13693F;--err:#A12424}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0B1430;--fg:#F6F5F1;--mut:#A9AFC2;--card:#1B2340;--line:#2E3550;--brand:#8C90FF;--soft:#1A1E73;--amber-s:#2E2410}}
+:root[data-theme=dark]{--bg:#0B1430;--fg:#F6F5F1;--mut:#A9AFC2;--card:#1B2340;--line:#2E3550;--brand:#8C90FF;--soft:#1A1E73;--amber-s:#2E2410}
+h2,h3{break-after:avoid}tr{break-inside:avoid}figure,.box,.qq{break-inside:avoid}*{box-sizing:border-box}html{background:var(--bg)}
+body{margin:0;color:var(--fg);font:500 15px/1.65 Manrope,'IBM Plex Sans Arabic',sans-serif}
+[lang=ar] body,body[lang=ar]{font-family:'IBM Plex Sans Arabic',Manrope,sans-serif;font-weight:400;line-height:1.85}
+.cover{height:297mm;width:210mm;background:#0B1430 url(assets/pw-background-ink_1920x1080.png) right center/auto 100% no-repeat;color:#fff;padding:22mm 20mm;display:flex;flex-direction:column;justify-content:space-between;page:cover;break-after:page}
+.cover img{height:46mm;align-self:flex-start}
+.cover .k{font:600 12px var(--mono,'JetBrains Mono');letter-spacing:.14em;color:#FFB23F}
+[lang=ar] .cover .k{letter-spacing:0;font-family:'IBM Plex Sans Arabic';font-size:14px}
+.cover h1{font-size:60px;line-height:1.05;font-weight:800;letter-spacing:-.025em;margin:10px 0 14px;max-width:150mm}
+[lang=ar] .cover h1{font-weight:700;letter-spacing:0}
+.cover p{font-size:20px;color:#BBBDF9;margin:0;max-width:120mm}
+.cover .s{font:600 12px 'JetBrains Mono';letter-spacing:.12em;color:#A9AFC2}
+.opener{height:297mm;width:210mm;background:#0B1430 url(assets/pw-pattern-Module-Field_ink_1024.png) right bottom/150mm no-repeat;color:#fff;padding:28mm 20mm;display:flex;flex-direction:column;justify-content:flex-end;page:cover;break-after:page}
+.opener .n{font:800 120px/1 Manrope;color:#FFB23F;margin-bottom:8px}[lang=ar] .opener .n{font-family:'IBM Plex Sans Arabic';font-weight:700;font-size:96px}
+.opener h2{font-size:42px;line-height:1.12;font-weight:800;margin:0 0 12px;color:#fff}.opener p{color:#BBBDF9;font-size:18px;max-width:130mm;margin:0 0 36mm}
+.bgp{position:fixed;inset-inline-end:0;bottom:0;width:70mm;height:70mm;background:url(assets/pw-pattern-Module-Field_paper_1024.png) right bottom/cover no-repeat;opacity:.55;z-index:-1}
+[dir=rtl] .bgp{transform:scaleX(-1)}
+.lessonhead{border-bottom:3px solid var(--amber);padding-bottom:14px;margin-bottom:8px}
+.k2{font:600 11px 'JetBrains Mono';letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}[lang=ar] .k2{font-family:'IBM Plex Sans Arabic';letter-spacing:0;text-transform:none;font-size:13px}
+h1.lt{font-size:34px;line-height:1.1;font-weight:800;letter-spacing:-.02em;margin:6px 0 2px}[lang=ar] h1.lt{font-weight:700;letter-spacing:0}
+.alt{color:var(--mut);font-size:15px;direction:ltr;text-align:start}[lang=ar] .alt{direction:ltr;text-align:right;font-family:Manrope}
+h3{font-size:18px;font-weight:700;margin:22px 0 6px;color:var(--brand);display:flex;align-items:center;gap:10px}
+h3:before{content:"";width:10px;height:10px;background:var(--amber);border-radius:2px}
+ul{padding-inline-start:22px;margin:6px 0}li{margin:3px 0}
+code{font:500 .88em 'JetBrains Mono',monospace;background:var(--soft);border-radius:4px;padding:1px 6px;direction:ltr;unicode-bidi:isolate;display:inline-block}
+.box{border-radius:12px;padding:12px 16px;border-inline-start:4px solid var(--amber);background:var(--amber-s);margin:8px 0}
+.box.b{border-color:var(--brand);background:var(--soft)}
+figure{margin:12px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}figure svg{width:100%;height:auto;display:block;direction:ltr}
+figcaption{font-size:12px;color:var(--mut);padding-top:6px}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;font-size:13px}th,td{padding:8px 12px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top}th{background:var(--soft)}
+.qq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0;break-inside:avoid}
+.qq label{display:block;padding:6px 8px;border-radius:8px;cursor:pointer}.qq label:hover{background:var(--soft)}
+.fb{margin-top:6px;font-size:13px;display:none}.fb.on{display:block}.fb.ok{color:var(--ok)}.fb.no{color:var(--err)}
+.print .qq label{cursor:default}.wrap{max-width:820px;margin:0 auto;padding:24px 20px 80px}
+.tools{display:flex;gap:8px;justify-content:flex-end;margin-bottom:12px}.tools button{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;padding:6px 14px;font:700 13px Manrope,'IBM Plex Sans Arabic';cursor:pointer}
+@page{size:A4;margin:18mm 18mm 20mm}@page cover{margin:0}
+@media print{html{background:var(--bg)}.tools{display:none}.wrap{padding:0;max-width:none}h3,figure,table,.box{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style><!--pw--><link rel="stylesheet" href="assets/platform.css"><!--/pw--></head><body lang="en"><div class="wrap"><div class="tools"><a href="lesson-3-2-en.html"><button>←</button></a><a href="lesson-3-lab-quiz-en.html"><button>→</button></a><a href="lesson-3-3-ar.html"><button>العربية</button></a><button id="tg">☾ / ☀</button></div><section class="lesson"><div class="lessonhead"><div class="k2">MODULE 03 · LESSON 3.3</div><h1 class="lt">Tracking your first files</h1><div class="alt">تتبّع ملفاتك الأولى</div></div>
+<h3>Learning objectives</h3><ul><li>Create the three starter files.</li><li>See untracked files in <code>git status</code>.</li><li>Name the four file states.</li></ul>
+<h3>Prerequisites</h3><p>Lesson 3.2.</p><h3>Introduction</h3><p>Git sees your folder but does not track anything until you tell it to. Here you create the first files and watch how Git reports them.</p>
+<h3>Explanation</h3><p>In VS Code choose <b>File → Open Folder</b> and open <code>my-first-project</code>. Create three files: <code>index.html</code>, <code>style.css</code> and <code>README.md</code>. Paste the contents below and <b>save each file</b>. A dot on a tab means it is not saved yet.</p><p><pre style="direction:ltr;text-align:left;background:#0B1430;color:#fff;border-radius:12px;padding:12px 16px;font:500 12.5px/1.6 'JetBrains Mono',monospace;white-space:pre-wrap;margin:8px 0">&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+  &lt;meta charset="utf-8">
+  &lt;title>My First Project&lt;/title>
+  &lt;link rel="stylesheet" href="style.css">
+&lt;/head>
+&lt;body>
+  &lt;h1>Hello, Git!&lt;/h1>
+  &lt;p>This is my first project.&lt;/p>
+&lt;/body>
+&lt;/html>
+</pre><pre style="direction:ltr;text-align:left;background:#0B1430;color:#fff;border-radius:12px;padding:12px 16px;font:500 12.5px/1.6 'JetBrains Mono',monospace;white-space:pre-wrap;margin:8px 0">body {
+  font-family: sans-serif;
+  margin: 2rem;
+}
+
+h1 {
+  color: #3B41E3;
+}
+</pre><pre style="direction:ltr;text-align:left;background:#0B1430;color:#fff;border-radius:12px;padding:12px 16px;font:500 12.5px/1.6 'JetBrains Mono',monospace;white-space:pre-wrap;margin:8px 0"># My First Project
+
+A small website I use to learn Git and GitHub.
+</pre></p><p>Run <code>git status</code>. Git lists the three files under <b>Untracked files</b>: it sees them but is not tracking them.</p><p><b>The four states:</b> <b>Untracked</b> (new, unknown to Git), <b>Modified</b> (tracked file changed), <b>Staged</b> (chosen for the next commit), <b>Committed</b> (safely stored in history). In VS Code, untracked files show a <b>U</b> beside the name and modified files show an <b>M</b>. You will stage and commit them in Module 4.</p>
+<h3>Real-world analogy</h3><div class="box b">Untracked files are guests who walked into the house. Git sees them, but nobody has put them on the guest list yet.</div>
+<h3>Diagram</h3><figure><svg viewBox="0 0 700 304" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono,monospace" font-size="13"><rect width="700" height="304" rx="10" fill="#1F1F1F"/><rect width="700" height="26" rx="10" fill="#181818"/><circle cx="16" cy="13" r="4" fill="#FF5F57"/><circle cx="30" cy="13" r="4" fill="#FEBC2E"/><circle cx="44" cy="13" r="4" fill="#28C840"/><text x="350" y="17" fill="#9D9D9D" font-size="11" text-anchor="middle" font-family="sans-serif">Illustration · Git Bash (not a real screenshot)</text><text x="18" y="54" fill="#FFB23F" xml:space="preserve">$ git status</text><text x="18" y="76" fill="#E8E8E8" xml:space="preserve">On branch main</text><text x="18" y="98" fill="#E8E8E8" xml:space="preserve"></text><text x="18" y="120" fill="#E8E8E8" xml:space="preserve">No commits yet</text><text x="18" y="142" fill="#E8E8E8" xml:space="preserve"></text><text x="18" y="164" fill="#E8E8E8" xml:space="preserve">Untracked files:</text><text x="18" y="186" fill="#E8E8E8" xml:space="preserve">  (use "git add &lt;file>..." to include in what will be committed)</text><text x="18" y="208" fill="#E8E8E8" xml:space="preserve">        README.md</text><text x="18" y="230" fill="#E8E8E8" xml:space="preserve">        index.html</text><text x="18" y="252" fill="#E8E8E8" xml:space="preserve">        style.css</text><text x="18" y="274" fill="#E8E8E8" xml:space="preserve"></text><text x="18" y="296" fill="#E8E8E8" xml:space="preserve">nothing added to commit but untracked files present (use "git add" to track)</text></svg><figcaption>Figure 1 · Illustration of the expected output</figcaption></figure>
+<h3>Commands</h3><p><code>git status</code><p>Run it after creating and saving the files. You can also copy the finished files from the course folder <code>starter-project/</code>.</p></p>
+<h3>Common mistakes and solutions</h3><table><tr><td><b>Files not saved.</b></td><td>Save with <code>Ctrl+S</code>. Git only sees saved changes.</td></tr><tr><td><b>Files created outside the project folder.</b></td><td>Check they are inside <code>my-first-project</code>.</td></tr><tr><td><b>Expecting git status to track the files.</b></td><td>It only reports. Tracking starts with git add.</td></tr></table>
+<h3>Practical exercise</h3><div class="box">Create the three files, save them, and run <code>git status</code>.</div><h3>Expected result</h3><p>All three files appear under “Untracked files”, as in Figure 1.</p>
+<h3>Knowledge check</h3><div class="qq"><b>1. What state is a brand-new file?</b><label><input type="radio" name="q0" data-c="0" data-w="Git has not seen it before."> Pushed</label><label><input type="radio" name="q0" data-c="1" data-w="Git has not seen it before."> Untracked</label><label><input type="radio" name="q0" data-c="0" data-w="Git has not seen it before."> Committed</label><div class="fb"></div></div><div class="qq"><b>2. What does U mean in VS Code?</b><label><input type="radio" name="q1" data-c="1" data-w="U marks an untracked file."> Untracked file</label><label><input type="radio" name="q1" data-c="0" data-w="U marks an untracked file."> Updated online</label><label><input type="radio" name="q1" data-c="0" data-w="U marks an untracked file."> Undo</label><div class="fb"></div></div><div class="qq"><b>3. Which state comes after staged?</b><label><input type="radio" name="q2" data-c="0" data-w="Commit stores staged changes in history."> Deleted</label><label><input type="radio" name="q2" data-c="1" data-w="Commit stores staged changes in history."> Committed</label><label><input type="radio" name="q2" data-c="0" data-w="Commit stores staged changes in history."> Untracked</label><div class="fb"></div></div><h3>Answers</h3><ul><li>Untracked — Git has not seen it before.</li><li>Untracked file — U marks an untracked file.</li><li>Committed — Commit stores staged changes in history.</li></ul>
+<h3>Summary</h3><p>You created index.html, style.css and README.md, saw them as untracked, and learned the four file states.</p><h3>Key vocabulary</h3><table><tr><td><b>Untracked</b></td><td>Not yet tracked by Git</td></tr><tr><td><b>Modified</b></td><td>A tracked file changed since the last commit</td></tr><tr><td><b>Staged</b></td><td>Marked for the next commit</td></tr><tr><td><b>Committed</b></td><td>Stored in the history</td></tr></table>
+<h3>Next lesson</h3><div class="box b"><b>Module 4 — Git add, commit and history.</b> The most important module: you will save your first snapshots.</div></section></div><script>
+document.querySelectorAll('.qq input').forEach(i=>i.onchange=()=>{const f=i.closest('.qq').querySelector('.fb');const ok=i.dataset.c==='1';f.className='fb on '+(ok?'ok':'no');f.textContent=(ok?'✓ ':'✗ ')+i.dataset.w});
+const D=document.documentElement;function th(v){D.dataset.theme=v;try{localStorage.setItem('pw-theme',v)}catch(e){}}
+try{const s=localStorage.getItem('pw-theme');if(s)D.dataset.theme=s}catch(e){}
+document.getElementById('tg').onclick=()=>th(D.dataset.theme==='dark'?'light':'dark');
+</script><!--pw--><script src="assets/nav-data.js"></script><script src="assets/search-index.js"></script><script src="assets/platform.js"></script><!--/pw--></body></html>

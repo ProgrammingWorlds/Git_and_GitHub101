@@ -1,0 +1,440 @@
+body.pw-nav {
+    padding-inline-start: 300px
+}
+
+.pw-side {
+    position: fixed;
+    inset-block: 0;
+    inset-inline-start: 0;
+    width: 300px;
+    background: var(--card);
+    border-inline-end: 1px solid var(--line);
+    overflow: auto;
+    padding: 14px 14px 40px;
+    z-index: 50;
+    font: 500 14px/1.5 Manrope, 'IBM Plex Sans Arabic', sans-serif
+}
+
+[lang=ar] .pw-side {
+    font-family: 'IBM Plex Sans Arabic', Manrope, sans-serif;
+    font-weight: 400
+}
+
+.pw-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--fg);
+    font-weight: 800;
+    margin-bottom: 10px
+}
+
+.pw-brand img {
+    width: 34px;
+    height: 34px
+}
+
+.pw-search {
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    color: var(--fg);
+    font: inherit
+}
+
+.pw-search:focus {
+    outline: 2px solid var(--brand);
+    outline-offset: 1px
+}
+
+.pw-res {
+    margin: 6px 0 0;
+    padding: 0;
+    list-style: none
+}
+
+.pw-side .pw-res li a {
+    display: block;
+    padding: 7px 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--fg)
+}
+
+.pw-res li a:hover {
+    background: var(--soft)
+}
+
+.pw-res small {
+    display: block;
+    color: var(--mut);
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.pw-bar {
+    height: 8px;
+    border-radius: 99px;
+    background: var(--line);
+    overflow: hidden;
+    margin: 12px 0 4px
+}
+
+.pw-bar i {
+    display: block;
+    height: 100%;
+    background: var(--amber);
+    width: 0;
+    transition: width .3s
+}
+
+.pw-pct {
+    font-size: 12px;
+    color: var(--mut)
+}
+
+.pw-side details {
+    margin-top: 6px;
+    border-radius: 10px
+}
+
+.pw-side summary {
+    cursor: pointer;
+    padding: 7px 8px;
+    border-radius: 8px;
+    font-weight: 700;
+    list-style: none
+}
+
+.pw-side summary:hover {
+    background: var(--soft)
+}
+
+.pw-side summary::-webkit-details-marker {
+    display: none
+}
+
+.pw-side details[open]>summary {
+    color: var(--brand)
+}
+
+.pw-side ul {
+    list-style: none;
+    margin: 2px 0 6px;
+    padding-inline-start: 10px
+}
+
+.pw-side ul a {
+    display: flex;
+    gap: 8px;
+    padding: 5px 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--fg);
+    font-size: 13.5px
+}
+
+.pw-side ul a:hover {
+    background: var(--soft)
+}
+
+.pw-side ul a.cur {
+    background: var(--soft);
+    font-weight: 700;
+    box-shadow: inset 3px 0 0 var(--amber)
+}
+
+[dir=rtl] .pw-side ul a.cur {
+    box-shadow: inset -3px 0 0 var(--amber)
+}
+
+.pw-ck {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid var(--mut);
+    margin-top: 3px;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center
+}
+
+a.done .pw-ck {
+    background: var(--ok);
+    border-color: var(--ok);
+    color: #fff
+}
+
+.pw-h {
+    margin: 14px 8px 4px;
+    font: 700 11px 'JetBrains Mono', monospace;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--mut)
+}
+
+[lang=ar] .pw-h {
+    letter-spacing: 0;
+    font-family: 'IBM Plex Sans Arabic';
+    text-transform: none;
+    font-size: 12px
+}
+
+.pw-burger {
+    display: none;
+    position: fixed;
+    top: 10px;
+    inset-inline-start: 10px;
+    z-index: 60;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--fg);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font: 700 14px sans-serif;
+    cursor: pointer
+}
+
+.pw-copy {
+    display: inline-block;
+    margin: 4px 0 8px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--fg);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font: 700 12px Manrope, 'IBM Plex Sans Arabic', sans-serif;
+    cursor: pointer
+}
+
+.pw-copy:hover {
+    background: var(--soft)
+}
+
+.pw-pre {
+    position: relative
+}
+
+.pw-pre .pw-copy {
+    position: absolute;
+    top: 6px;
+    inset-inline-end: 6px;
+    margin: 0;
+    opacity: .9
+}
+
+.tk-git {
+    color: #B36B00;
+    font-weight: 700
+}
+
+.tk-sub {
+    color: var(--brand);
+    font-weight: 700
+}
+
+.tk-flag {
+    color: #7A3FB5
+}
+
+.tk-str {
+    color: var(--ok)
+}
+
+:root[data-theme=dark] .tk-git,
+:root:not([data-theme=light]) .tk-git {
+    color: #FFB23F
+}
+
+.pw-done {
+    display: inline-block;
+    margin: 18px 8px 0 0;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 2px solid var(--brand);
+    background: var(--soft);
+    color: var(--fg);
+    font: 800 14px Manrope, 'IBM Plex Sans Arabic', sans-serif;
+    cursor: pointer
+}
+
+.pw-done.on {
+    background: var(--ok);
+    border-color: var(--ok);
+    color: #fff
+}
+
+.pw-score {
+    margin: 12px 0;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-weight: 700
+}
+
+.pw-score.ok {
+    background: #DDF3E6;
+    color: #0B4A2A
+}
+
+.pw-score.no {
+    background: #FBE3E3;
+    color: #7A1515
+}
+
+.pw-home {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 24px 20px 80px
+}
+
+.pw-hero {
+    border-radius: 22px;
+    padding: 42px 32px;
+    color: #fff;
+    background: #0B1430 url("pw-background-ink_1920x1080.png") right center / cover no-repeat;
+    margin: 12px 0 22px;
+}
+
+.pw-hero h1 {
+    font: 800 clamp(30px, 5vw, 48px)/1.15 Manrope, 'IBM Plex Sans Arabic', sans-serif;
+    margin: 8px 0;
+}
+
+.pw-hero p {
+    max-width: 560px;
+    color: #DCDFF0;
+    margin: 6px 0 18px;
+}
+
+.pw-hero .k2 {
+    color: #FFB23F;
+}
+
+/* Mirror the background horizontally for Arabic only */
+[lang="ar"] .pw-hero {
+    position: relative;
+    isolation: isolate;
+    background: #0B1430;
+}
+
+[lang="ar"] .pw-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("pw-background-ink_1920x1080.png") center / cover no-repeat;
+    transform: scaleX(-1);
+    z-index: -1;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+[lang="ar"] .pw-hero h1 {
+    font-family: 'IBM Plex Sans Arabic';
+    font-weight: 700;
+}
+
+.pw-btn {
+    display: inline-block;
+    margin: 0 8px 8px 0;
+    padding: 11px 20px;
+    border-radius: 999px;
+    background: #FFB23F;
+    color: #0B1430;
+    font: 800 14px Manrope, 'IBM Plex Sans Arabic', sans-serif;
+    text-decoration: none
+}
+
+.pw-btn.alt {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff
+}
+
+.pw-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 14px
+}
+
+.pw-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 16px
+}
+
+.pw-card h3 {
+    margin: 2px 0 6px;
+    font-size: 17px
+}
+
+.pw-card .n {
+    font: 700 12px 'JetBrains Mono', monospace;
+    color: var(--brand)
+}
+
+.pw-card ul {
+    margin: 6px 0;
+    padding-inline-start: 18px;
+    font-size: 14px
+}
+
+.pw-card a {
+    color: var(--fg)
+}
+
+.pw-card .pw-bar {
+    margin: 8px 0 2px
+}
+
+.pw-sec {
+    font: 800 22px Manrope, 'IBM Plex Sans Arabic', sans-serif;
+    margin: 30px 0 12px
+}
+
+@media(max-width:1000px) {
+    body.pw-nav {
+        padding-inline-start: 0
+    }
+
+    .pw-side {
+        transform: translateX(-105%);
+        transition: transform .2s
+    }
+
+    [dir=rtl] .pw-side {
+        transform: translateX(105%)
+    }
+
+    .pw-side.open {
+        transform: none !important
+    }
+
+    .pw-burger {
+        display: block
+    }
+
+    .wrap {
+        padding-top: 56px !important
+    }
+}
+
+@media print {
+
+    .pw-side,
+    .pw-burger,
+    .pw-copy,
+    .pw-done {
+        display: none !important
+    }
+
+    body.pw-nav {
+        padding: 0
+    }
+}
